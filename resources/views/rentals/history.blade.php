@@ -16,7 +16,6 @@
         <h3>Histórico Completo</h3>
         <div class="panel-actions">
             <button class="btn-icon" id="toggleFilter"><i class="fas fa-filter"></i></button>
-            <a href="#" class="btn-icon"><i class="fas fa-download"></i></a>
         </div>
     </div>
     

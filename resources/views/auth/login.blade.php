@@ -26,13 +26,7 @@
                     <label><i class="fas fa-lock"></i> Password</label>
                     <input type="password" name="password" placeholder="Enter your password" required>
                 </div>
-                <div class="remember-forgot">
-                    <div class="remember">
-                        <input type="checkbox" id="remember">
-                        <label for="remember">Remember me</label>
-                    </div>
-                    <a href="#" class="forgot">Forgot password?</a>
-                </div>
+                <br>
                 <button type="submit">Login <i class="fas fa-arrow-right"></i></button>
             </form>
             @if (session('error'))

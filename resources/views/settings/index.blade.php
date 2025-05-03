@@ -83,15 +83,6 @@
                         <input type="number" id="max_loans_per_user" name="settings[max_loans_per_user]" class="form-control" 
                                value="{{ $settings['max_loans_per_user'] ?? 3 }}" min="1" max="10">
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="late_fee_per_day">Multa por atraso (por dia)</label>
-                        <div class="input-with-prefix">
-                            <span class="input-prefix">R$</span>
-                            <input type="number" id="late_fee_per_day" name="settings[late_fee_per_day]" class="form-control" 
-                                   value="{{ $settings['late_fee_per_day'] ?? 0.50 }}" min="0" step="0.10">
-                        </div>
-                    </div>
                 </div>
                 
                 <div class="settings-section">

@@ -46,7 +46,6 @@ return new class extends Migration
             // Empréstimos
             'default_loan_period' => 14,
             'max_loans_per_user' => 3,
-            'late_fee_per_day' => 0.50,
             'max_renewals' => 2,
             'allow_renewal_with_pending' => 0,
             

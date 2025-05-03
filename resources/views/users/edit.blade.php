@@ -59,7 +59,7 @@
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-save"></i> Atualizar
                 </button>
-                <a href="{{ route('users.show', $usuario->id_usuario) }}" class="btn btn-secondary">
+                <a href="{{ route('users.index', $usuario->id_usuario) }}" class="btn btn-secondary">
                     <i class="fas fa-times"></i> Cancelar
                 </a>
             </div>
