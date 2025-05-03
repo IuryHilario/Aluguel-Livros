@@ -1,0 +1,225 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f3eb;
+    color: #55423d;
+    background-image: linear-gradient(135deg, #f8f3eb 0%, #e8d9c5 100%);
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container .card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.boxLogin {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(85, 66, 61, 0.15);
+    width: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.boxLogin::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    background: linear-gradient(to right, #a17c5b, #7b5d48);
+}
+
+.logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo-circle {
+    background: linear-gradient(135deg, #a17c5b, #7b5d48);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(123, 93, 72, 0.3);
+}
+
+.logo-circle i {
+    font-size: 30px;
+    color: #fff;
+}
+
+.boxLogin h1 {
+    text-align: center;
+    margin-bottom: 5px;
+    color: #7b5d48;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.welcome-text {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #8a8a8a;
+    font-size: 14px;
+}
+
+.inputBox {
+    margin-bottom: 20px;
+}
+
+.inputBox label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #7b5d48;
+}
+
+.inputBox label i {
+    margin-right: 6px;
+    color: #a17c5b;
+}
+
+.inputBox input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #e0d6cc;
+    border-radius: 8px;
+    background-color: #fcfaf7;
+    transition: all 0.3s ease;
+    font-size: 15px;
+}
+
+.inputBox input:focus {
+    outline: none;
+    border-color: #a17c5b;
+    box-shadow: 0 0 0 3px rgba(161, 124, 91, 0.1);
+}
+
+.inputBox input::placeholder {
+    color: #c0b8b2;
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+}
+
+.remember input {
+    margin-right: 6px;
+    accent-color: #7b5d48;
+}
+
+.forgot {
+    color: #a17c5b;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.forgot:hover {
+    color: #6a4c3b;
+    text-decoration: underline;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to right, #a17c5b, #7b5d48);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(123, 93, 72, 0.2);
+}
+
+button i {
+    margin-left: 8px;
+    font-size: 14px;
+    transition: transform 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(to right, #8d6a4e, #6a4c3b);
+    box-shadow: 0 6px 12px rgba(123, 93, 72, 0.3);
+}
+
+button:hover i {
+    transform: translateX(4px);
+}
+
+.error-message {
+    color: #e74c3c;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    padding: 8px;
+    background-color: rgba(231, 76, 60, 0.1);
+    border-radius: 5px;
+}
+
+.register-section {
+    margin-top: 25px;
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid #e0d6cc;
+    font-size: 14px;
+}
+
+.register-section a {
+    color: #a17c5b;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.register-section a:hover {
+    color: #7b5d48;
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .boxLogin {
+        width: 90%;
+        padding: 30px;
+    }
+}
+
+
+
+

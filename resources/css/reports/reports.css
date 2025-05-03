@@ -1,0 +1,278 @@
+/* Estilos para a página de relatórios */
+
+/* Cards de resumo */
+.dashboard-summary {
+    margin-bottom: 24px;
+}
+
+.summary-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.summary-cards .card {
+    flex: 1;
+    min-width: 220px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    border-left: 4px solid #ddd;
+    transition: transform 0.2s ease;
+}
+
+.summary-cards .card:hover {
+    transform: translateY(-5px);
+}
+
+.summary-cards .card.blue {
+    border-left-color: #4267B2;
+}
+
+.summary-cards .card.green {
+    border-left-color: #42B983;
+}
+
+.summary-cards .card.orange {
+    border-left-color: #F08C00;
+}
+
+.summary-cards .card.red {
+    border-left-color: #E74C3C;
+}
+
+.summary-cards .card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 24px;
+}
+
+.card.blue .card-icon {
+    background-color: rgba(66, 103, 178, 0.1);
+    color: #4267B2;
+}
+
+.card.green .card-icon {
+    background-color: rgba(66, 185, 131, 0.1);
+    color: #42B983;
+}
+
+.card.orange .card-icon {
+    background-color: rgba(240, 140, 0, 0.1);
+    color: #F08C00;
+}
+
+.card.red .card-icon {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #E74C3C;
+}
+
+.summary-cards .card-data {
+    flex: 1;
+}
+
+.summary-cards .card-data h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.summary-cards .card-data span {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Estatísticas mensais */
+.monthly-stats {
+    overflow-x: auto;
+}
+
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.stats-table th {
+    background-color: #f8f9fa;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.stats-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.stats-table tr:hover td {
+    background-color: #f8f9fa;
+}
+
+/* Layout de painéis em linha */
+.reports-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.half-panel {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Tabelas de dados dentro dos relatórios */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th {
+    background-color: #f8f9fa;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #e9ecef;
+    font-size: 0.9rem;
+}
+
+.data-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 0.9rem;
+}
+
+/* Aluguéis atrasados */
+.overdue-row {
+    background-color: rgba(231, 76, 60, 0.05);
+}
+
+.overdue-row:hover td {
+    background-color: rgba(231, 76, 60, 0.1) !important;
+}
+
+/* Filtro de atrasos */
+.overdue-filter-container {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border: 1px solid #e9ecef;
+}
+
+.overdue-filter-container .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.overdue-filter-container .filter-column {
+    flex: 1;
+    min-width: 200px;
+}
+
+.overdue-filter-container .filter-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.overdue-filter-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.overdue-filter-container input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Ações nas tabelas */
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.action-btn.return {
+    background-color: #42B983;
+}
+
+.action-btn.notify {
+    background-color: #F08C00;
+}
+
+.action-btn.details {
+    background-color: #4267B2;
+}
+
+.action-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+/* Estado vazio */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #888;
+    text-align: center;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.4;
+}
+
+.empty-state p {
+    font-size: 1rem;
+    max-width: 300px;
+    margin: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .summary-cards {
+        flex-direction: column;
+    }
+    
+    .reports-row {
+        flex-direction: column;
+    }
+    
+    .half-panel {
+        width: 100%;
+    }
+}

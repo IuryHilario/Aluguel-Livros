@@ -1,0 +1,829 @@
+/* Estilos para o gerenciamento de usuários */
+
+/* Tabela de listagem de usuários */
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-table th {
+    background-color: rgba(248, 243, 235, 0.5);
+    text-align: left;
+    padding: 12px 15px;
+    font-weight: 600;
+    color: var(--primary-dark);
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.users-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--accent-color);
+    color: var(--text-dark);
+}
+
+.users-table tr:last-child td {
+    border-bottom: none;
+}
+
+.users-table tr:hover td {
+    background-color: rgba(248, 243, 235, 0.3);
+}
+
+/* Avatar em miniatura para lista de usuários */
+.user-info-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar-small {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Estado vazio para tabelas */
+.empty-state {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin: 20px 0;
+}
+
+.empty-state .empty-icon {
+    font-size: 64px;
+    color: var(--primary-light);
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+.empty-state h4 {
+    font-size: 20px;
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.empty-state p {
+    color: var(--text-light);
+    margin-bottom: 25px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
+.empty-state .btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+}
+
+/* Container de filtros */
+.filter-container {
+    background-color: var(--gray-100);
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 0 0 8px 8px;
+    border-top: 1px solid var(--gray-200);
+    transition: all 0.3s;
+}
+
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.filter-column {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-column label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--gray-700);
+}
+
+.filter-column input,
+.filter-column select,
+.filter-column .custom-select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    background-color: #fff;
+    transition: all 0.2s ease;
+}
+
+.filter-column input:focus,
+.filter-column select:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+.filter-actions {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.filter-active {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    background-color: var(--primary-light);
+    opacity: 0.9;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.filter-tag {
+    display: inline-block;
+    margin-right: 15px;
+    color: var(--primary-dark);
+    font-size: 14px;
+}
+
+.filter-tag i {
+    margin-right: 5px;
+    color: var(--primary-color);
+}
+
+.filter-tag strong {
+    font-weight: 600;
+}
+
+/* Formulário de usuário */
+.form-usuario {
+    max-width: 800px;
+}
+
+.form-usuario .form-group {
+    margin-bottom: 20px;
+}
+
+.form-usuario label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--primary-dark);
+}
+
+.form-usuario input,
+.form-usuario select,
+.form-usuario textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    background-color: #fcfaf7;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.form-usuario input:focus,
+.form-usuario select:focus,
+.form-usuario textarea:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(161, 124, 91, 0.1);
+}
+
+.form-usuario .form-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Badge para status */
+.user-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.user-badge.active {
+    background-color: rgba(46, 204, 113, 0.15);
+    color: var(--success);
+}
+
+.user-badge.inactive {
+    background-color: rgba(231, 76, 60, 0.15);
+    color: var(--danger);
+}
+
+/* Action buttons */
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background-color: rgba(161, 124, 91, 0.1);
+    color: var(--primary-color);
+}
+
+.action-btn.edit:hover {
+    color: #3498db;
+}
+
+.action-btn.delete:hover {
+    color: #e74c3c;
+}
+
+/* Filter and search section */
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-form input {
+    padding: 8px 12px;
+    border: 1px solid var(--accent-color);
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+/* Filtro e busca aprimorados */
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input-wrapper input {
+    padding: 10px 40px 10px 15px;
+    border: 1px solid var(--accent-color);
+    border-radius: 6px;
+    background-color: #fff;
+    width: 300px;
+    font-size: 14px;
+}
+
+.search-input-wrapper .btn-icon {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+.search-input-wrapper .clear-search {
+    position: absolute;
+    right: 35px;
+    color: var(--text-light);
+}
+
+.search-input-wrapper .btn-icon:hover,
+.search-input-wrapper .clear-search:hover {
+    color: var(--primary-color);
+}
+
+.order-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 15px;
+}
+
+.order-options select {
+    padding: 8px 10px;
+    border: 1px solid var(--accent-color);
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.filter-active {
+    margin-top: 15px;
+    background-color: rgba(248, 243, 235, 0.5);
+    border-radius: 6px;
+    padding: 10px 15px;
+}
+
+.filter-tag {
+    display: inline-block;
+    margin-right: 15px;
+    color: var(--text-dark);
+}
+
+.clear-all-filters {
+    display: inline-block;
+    margin-left: 10px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.clear-all-filters:hover {
+    text-decoration: underline;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+/* Mensagens de alerta */
+.alert {
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.alert-success {
+    background-color: rgba(46, 204, 113, 0.15);
+    color: var(--success);
+    border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.alert-danger {
+    background-color: rgba(231, 76, 60, 0.15);
+    color: var(--danger);
+    border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+/* Detalhes do usuário */
+.user-details {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+
+.user-details .user-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-details .user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin-right: 20px;
+}
+
+.user-details .user-name {
+    font-size: 24px;
+    color: var(--primary-dark);
+    margin-bottom: 5px;
+}
+
+.user-details .user-email {
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+.user-details .user-info {
+    margin-top: 20px;
+}
+
+.user-details .info-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--accent-color);
+    display: flex;
+}
+
+.user-details .info-item:last-child {
+    border-bottom: none;
+}
+
+.user-details .info-label {
+    font-weight: 600;
+    width: 150px;
+    color: var(--primary-dark);
+}
+
+.user-details .info-value {
+    flex: 1;
+}
+
+/* Estilos para a página de detalhes do usuário */
+.user-details {
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.user-header {
+    display: flex;
+    align-items: center;
+    padding: 25px;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    box-shadow: 0 4px 15px rgba(123, 93, 72, 0.3);
+}
+
+.user-avatar span {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.user-header-info {
+    flex: 1;
+}
+
+.user-name {
+    margin: 0 0 8px 0;
+    font-size: 1.8rem;
+    color: var(--primary-dark);
+}
+
+.user-email {
+    color: var(--text-light);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+/* Cards de estatísticas do usuário */
+.user-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background-color: var(--primary-light, #f8f3eb);
+    border-radius: 8px;
+    margin: 20px;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 180px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.stat-icon i {
+    font-size: 22px;
+    color: white;
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+.stat-label {
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+/* Seção de informações */
+.info-section {
+    margin: 20px;
+}
+
+.info-section h3 {
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: var(--primary-dark);
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    background-color: #fcfaf7;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-light);
+    align-items: center;
+}
+
+.info-label {
+    font-weight: 600;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 180px;
+}
+
+.info-label i {
+    color: var(--primary-color);
+}
+
+.info-value {
+    flex: 1;
+    color: var(--text-dark);
+}
+
+.user-rentals {
+    margin: 20px;
+}
+
+.user-rentals h3 {
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: var(--primary-dark);
+    font-size: 1.3rem;
+}
+
+/* Estilos para os cards de aluguel */
+.rentals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.rental-card {
+    display: flex;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rental-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.rental-status-indicator {
+    width: 5px;
+    min-height: 100%;
+}
+
+.status-active {
+    background-color: #4361ee;
+}
+
+.status-returned {
+    background-color: #10b981;
+}
+
+.status-delayed {
+    background-color: #ef4444;
+}
+
+.rental-content {
+    flex: 1;
+    padding: 15px;
+}
+
+.rental-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.rental-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--primary-dark);
+}
+
+.rental-badge {
+    display: inline-flex;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+}
+
+.rental-badge.active {
+    background-color: #4361ee;
+}
+
+.rental-badge.returned {
+    background-color: #10b981;
+}
+
+.rental-badge.delayed {
+    background-color: #ef4444;
+}
+
+.rental-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.rental-details {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.rental-detail {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rental-detail i {
+    color: var(--primary-color);
+    width: 16px;
+}
+
+.rental-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-small {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    background-color: #f8f3eb;
+    color: var(--primary-color);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    border: 1px solid var(--primary-light);
+    transition: all 0.2s ease;
+}
+
+.btn-small:hover {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+.empty-rentals {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.empty-rentals i {
+    font-size: 3rem;
+    color: var(--primary-light);
+    margin-bottom: 15px;
+    opacity: 0.6;
+}
+
+.empty-rentals p {
+    color: var(--text-light);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .filter-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .user-details .user-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .user-details .user-avatar {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .user-details .info-item {
+        flex-direction: column;
+    }
+    
+    .user-details .info-label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .search-form {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .search-input-wrapper {
+        width: 100%;
+    }
+    
+    .search-input-wrapper input {
+        width: 100%;
+    }
+    
+    .order-options {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .order-options select {
+        flex: 1;
+    }
+
+    .user-stats {
+        flex-direction: column;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .info-label {
+        margin-bottom: 8px;
+    }
+}
