@@ -45,4 +45,64 @@ class SettingsController extends Controller
             return redirect()->back()->with('error', 'Erro ao atualizar configurações: ' . $e->getMessage());
         }
     }    
+    
+    public function backups()
+    {
+        $backupService = new \App\Services\BackupService();
+        $backups = $backupService->getBackups();
+        
+        return view('settings.backups', compact('backups'));
+    }
+    
+    public function createBackup()
+    {
+        try {
+            $backupService = new \App\Services\BackupService();
+            $result = $backupService->createBackup();
+            
+            if ($result['success']) {
+                return redirect()->route('settings.backups')
+                    ->with('success', 'Backup criado com sucesso!');
+            } else {
+                return redirect()->route('settings.backups')
+                    ->with('error', 'Erro ao criar backup: ' . ($result['message'] ?? 'Erro desconhecido'));
+            }
+        } catch (\Exception $e) {
+            \Log::error('Erro ao criar backup: ' . $e->getMessage());
+            return redirect()->route('settings.backups')
+                ->with('error', 'Erro ao criar backup: ' . $e->getMessage());
+        }
+    }
+    
+    public function downloadBackup($filename)
+    {
+        $backupPath = storage_path('app/backups/' . $filename);
+        
+        if (file_exists($backupPath)) {
+            return response()->download($backupPath);
+        }
+        
+        return redirect()->route('settings.backups')
+            ->with('error', 'Arquivo de backup não encontrado.');
+    }
+    
+    public function deleteBackup($filename)
+    {
+        try {
+            $backupService = new \App\Services\BackupService();
+            $result = $backupService->deleteBackup($filename);
+            
+            if ($result) {
+                return redirect()->route('settings.backups')
+                    ->with('success', 'Backup excluído com sucesso!');
+            } else {
+                return redirect()->route('settings.backups')
+                    ->with('error', 'Arquivo de backup não encontrado.');
+            }
+        } catch (\Exception $e) {
+            \Log::error('Erro ao excluir backup: ' . $e->getMessage());
+            return redirect()->route('settings.backups')
+                ->with('error', 'Erro ao excluir backup: ' . $e->getMessage());
+        }
+    }
 }

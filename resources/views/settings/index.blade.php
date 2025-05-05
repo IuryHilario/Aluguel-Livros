@@ -167,10 +167,28 @@
                     
                     <div id="backup-settings" style="{{ isset($settings['enable_auto_backup']) && $settings['enable_auto_backup'] ? '' : 'display: none;' }}">
                         <div class="form-group">
-                            <label for="backup_frequency">Frequência de backup (dias)</label>
-                            <input type="number" id="backup_frequency" name="settings[backup_frequency]" class="form-control" 
-                                   value="{{ $settings['backup_frequency'] ?? 7 }}" min="1" max="30">
+                            <label for="backup_frequency">Frequência de backup</label>
+                            <select id="backup_frequency" name="settings[backup_frequency]" class="form-control">
+                                <option value="daily" {{ ($settings['backup_frequency'] ?? 'weekly') == 'daily' ? 'selected' : '' }}>Diário</option>
+                                <option value="weekly" {{ ($settings['backup_frequency'] ?? 'weekly') == 'weekly' ? 'selected' : '' }}>Semanal</option>
+                                <option value="monthly" {{ ($settings['backup_frequency'] ?? 'weekly') == 'monthly' ? 'selected' : '' }}>Mensal</option>
+                            </select>
                         </div>
+                        
+                        <div class="form-group">
+                            <label for="backup_retention">Número de backups a manter</label>
+                            <input type="number" id="backup_retention" name="settings[backup_retention]" class="form-control" 
+                                   value="{{ $settings['backup_retention'] ?? 5 }}" min="1" max="30">
+                            <small class="form-text text-muted">Backups mais antigos serão automaticamente excluídos quando novos forem criados.</small>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group mt-4">
+                        <h5>Ações de Backup Manual</h5>
+                        <p>Você pode criar backups manualmente ou gerenciar os existentes.</p>
+                        <a href="{{ route('settings.backups') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-database"></i> Gerenciar Backups
+                        </a>
                     </div>
                 </div>
             </div>
@@ -183,8 +201,12 @@
         </form>
     </div>
 </div>
+@endsection
 
 @push('scripts')
+<!-- Sweet Alert 2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Gerenciamento de abas
@@ -225,4 +247,3 @@
     });
 </script>
 @endpush
-@endsection

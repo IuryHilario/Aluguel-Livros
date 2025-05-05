@@ -1,0 +1,217 @@
+/* Estilos gerais para o painel de backup */
+.panel-modern {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    margin-bottom: 2rem;
+}
+
+.panel-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #f1f1f1;
+    background-color: #fcfcfc;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.panel-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.panel-subtitle {
+    color: #6c757d;
+    font-size: 0.875rem;
+    margin-bottom: 0;
+}
+
+.panel-body {
+    padding: 1.5rem;
+}
+
+.btn-with-icon i {
+    margin-right: 0.5rem;
+}
+
+/* Cards informativos */
+.info-card, .status-card {
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    height: 100%;
+    background: #fff;
+    overflow: hidden;
+}
+
+.info-card-header, .status-card-header {
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.info-card-header i {
+    font-size: 1.25rem;
+    margin-right: 0.75rem;
+}
+
+.info-card-header h5, .status-card-header h5 {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.info-card-body, .status-card-body {
+    padding: 1.25rem;
+}
+
+.info-card-body p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Status card específico */
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.status-label {
+    color: #495057;
+    font-weight: 500;
+}
+
+.status-badge {
+    padding: 0.35rem 0.75rem;
+    border-radius: 50rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-success {
+    background-color: #d1e7dd;
+    color: #146c43;
+}
+
+.badge-danger {
+    background-color: #f8d7da;
+    color: #b02a37;
+}
+
+.badge-info {
+    background-color: #cff4fc;
+    color: #087990;
+}
+
+.badge-secondary {
+    background-color: #e2e3e5;
+    color: #41464b;
+}
+
+/* Backup list card */
+.backup-list-card {
+    background: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    overflow: hidden;
+}
+
+.backup-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.backup-list-header h5 {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.total-backups {
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+.backup-table-wrapper {
+    padding: 0;
+}
+
+.backup-table {
+    margin-bottom: 0;
+}
+
+.backup-table th {
+    font-weight: 600;
+    background-color: #f8f9fa;
+    color: #495057;
+    border-top: none;
+    padding: 0.75rem 1.25rem;
+}
+
+.backup-table td {
+    padding: 0.75rem 1.25rem;
+    vertical-align: middle;
+}
+
+.backup-filename .filename-container {
+    display: flex;
+    align-items: center;
+}
+
+.backup-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.backup-table .actions .btn-group .btn {
+    border-radius: 0.25rem;
+    margin: 0 0.125rem;
+}
+
+/* Empty state */
+.empty-state {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.empty-state-container {
+    max-width: 32rem;
+    margin: 0 auto;
+}
+
+.empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    font-size: 2rem;
+    color: #6c757d;
+    margin: 0 auto 1.5rem;
+}
+
+.empty-state h4 {
+    color: #343a40;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.empty-state p {
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
