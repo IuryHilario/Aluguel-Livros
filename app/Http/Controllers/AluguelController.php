@@ -269,4 +269,40 @@ class AluguelController extends Controller
         
         return view('rentals.details', compact('aluguel', 'diasAtraso', 'settings'));
     }
+
+    public function sendNotification($id)
+    {
+        try {
+            $aluguel = Aluguel::with(['usuario', 'livro'])->findOrFail($id);
+            $settings = Settings::getAllSettings();
+            
+            if (!isset($settings['enable_email_notifications']) || !$settings['enable_email_notifications']) {
+                return redirect()->back()->with('error', 'As notificações por e-mail estão desativadas nas configurações do sistema.');
+            }
+            
+            if ($aluguel->ds_status === Aluguel::STATUS_DEVOLVIDO) {
+                return redirect()->back()->with('error', 'Não é possível enviar notificação para um aluguel já devolvido.');
+            } else if ($aluguel->ds_status !== Aluguel::STATUS_ATRASADO) {
+                return redirect()->back()->with('error', 'Apenas aluguéis atrasados podem receber notificações.');
+            }
+            
+            if (!$aluguel->usuario || empty($aluguel->usuario->email)) {
+                return redirect()->back()->with('error', 'Usuário não possui e-mail cadastrado.');
+            }
+            
+            \Log::info('Enviando notificação para ' . $aluguel->usuario->email . ' sobre o livro ' . $aluguel->livro->titulo);
+            
+            $success = $aluguel->enviarNotificacaoAtraso();
+            
+            if ($success) {
+                return redirect()->back()->with('success', 'Notificação de atraso enviada com sucesso!');
+            } else {
+                return redirect()->back()->with('error', 'Houve um problema ao enviar a notificação. Verifique a configuração de e-mail.');
+            }
+        } catch (\Exception $e) {
+            \Log::error('Erro ao enviar notificação: ' . $e->getMessage());
+            \Log::error($e->getTraceAsString());
+            return redirect()->back()->with('error', 'Erro ao enviar notificação: ' . $e->getMessage());
+        }
+    }
 }

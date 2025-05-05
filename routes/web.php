@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{id}', [AluguelController::class, 'show'])->name('rentals.show');
         Route::get('/{id}/return', [AluguelController::class, 'return'])->name('rentals.return');
         Route::get('/{id}/renew', [AluguelController::class, 'renew'])->name('rentals.renew');
+        Route::get('/{id}/notification', [AluguelController::class, 'sendNotification'])->name('rentals.notification');
     });
 
     // Users routes
