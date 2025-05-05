@@ -183,9 +183,6 @@
             <button class="btn-icon" id="toggleOverdueFilter" title="Filtrar">
                 <i class="fas fa-filter"></i>
             </button>
-            <a href="#" class="btn-icon" id="notifyAllBtn" title="Notificar Todos">
-                <i class="fas fa-bell"></i>
-            </a>
         </div>
     </div>
     
@@ -240,9 +237,6 @@
                                 <td class="actions">
                                     <a href="{{ route('rentals.show', $rental->id_aluguel) }}" class="action-btn details" title="Ver Detalhes">
                                         <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="#" class="action-btn notify" data-id="{{ $rental->id_usuario }}" title="Notificar Usuário">
-                                        <i class="fas fa-envelope"></i>
                                     </a>
                                 </td>
                             </tr>

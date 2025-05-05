@@ -65,5 +65,21 @@ class Settings extends Model
         if (isset($settings['email_from_address'])) {
             config(['mail.from.address' => $settings['email_from_address']]);
         }
+        
+        if (isset($settings['enable_email_notifications'])) {
+            config(['app.enable_email_notifications' => (bool)$settings['enable_email_notifications']]);
+        }
+        
+        if (isset($settings['days_before_due_reminder'])) {
+            config(['app.days_before_due_reminder' => $settings['days_before_due_reminder']]);
+        }
+        
+        if (isset($settings['send_overdue_notices'])) {
+            config(['app.send_overdue_notices' => (bool)$settings['send_overdue_notices']]);
+        }
+        
+        if (isset($settings['overdue_notice_frequency'])) {
+            config(['app.overdue_notice_frequency' => $settings['overdue_notice_frequency']]);
+        }
     }
 }

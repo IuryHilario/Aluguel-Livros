@@ -119,6 +119,13 @@
                                            onclick="return confirm('Tem certeza que deseja marcar este livro como devolvido?')">
                                             <i class="fas fa-undo"></i> Devolver
                                         </a>
+                                        @if($aluguel->ds_status == 'Atrasado')
+                                        <a href="{{ route('rentals.notification', $aluguel->id_aluguel) }}" 
+                                           class="btn btn-sm btn-primary return-btn"
+                                           onclick="return confirm('Enviar email de atraso novamente?')">
+                                            <i class="fas fa-envelope"></i> Email   
+                                        </a>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>

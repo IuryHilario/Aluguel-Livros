@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use App\Models\Settings;
+use App\Notifications\AluguelAtrasado;
 
 class Aluguel extends Model
 {
@@ -85,9 +86,16 @@ class Aluguel extends Model
         $hoje = Carbon::now()->startOfDay();
         
         if ($dataDevolucao->lt($hoje)) {
-            if ($this->ds_status !== self::STATUS_ATRASADO) {
+            $statusChanged = $this->ds_status !== self::STATUS_ATRASADO;
+            
+            if ($statusChanged) {
                 $this->ds_status = self::STATUS_ATRASADO;
                 $this->save();
+                
+                $settings = Settings::getAllSettings();
+                if (isset($settings['enable_email_notifications']) && $settings['enable_email_notifications']) {
+                    $this->enviarNotificacaoAtraso();
+                }
             }
         } 
         else {
@@ -98,6 +106,52 @@ class Aluguel extends Model
         }
         
         return $this;
+    }
+    
+    public function enviarNotificacaoAtraso()
+    {
+        try {
+            // Verificar configurações de notificação
+            $settings = Settings::getAllSettings();
+            if (!isset($settings['enable_email_notifications']) || !$settings['enable_email_notifications']) {
+                \Log::info('Notificações por e-mail desativadas nas configurações.');
+                return false;
+            }
+            
+            // Carregar o relacionamento se não foi carregado
+            if (!$this->relationLoaded('usuario') || !$this->relationLoaded('livro')) {
+                $this->load('usuario', 'livro');
+            }
+            
+            if (!$this->usuario || empty($this->usuario->email)) {
+                \Log::warning('Usuário não encontrado ou sem email para o aluguel ID: ' . $this->id_aluguel);
+                return false;
+            }
+            
+            // Configurar o remetente do e-mail com base nas configurações
+            if (isset($settings['email_from_name']) && isset($settings['email_from_address'])) {
+                config([
+                    'mail.from.name' => $settings['email_from_name'],
+                    'mail.from.address' => $settings['email_from_address']
+                ]);
+            }
+            
+            \Log::info('Tentando enviar notificação para usuário: ' . $this->usuario->email);
+            
+            try {
+                $this->usuario->notify(new AluguelAtrasado($this));
+                \Log::info('Notificação de atraso enviada com sucesso para o usuário ID: ' . $this->usuario->id_usuario);
+                return true;
+            } catch (\Exception $e) {
+                \Log::error('Falha ao enviar notificação: ' . $e->getMessage());
+                \Log::error($e->getTraceAsString());
+                return false;
+            }
+        } catch (\Exception $e) {
+            \Log::error('Erro ao preparar notificação de atraso: ' . $e->getMessage());
+            \Log::error($e->getTraceAsString());
+            return false;
+        }
     }
     
     public function estaAtrasado()

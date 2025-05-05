@@ -21,11 +21,24 @@ class SettingsController extends Controller
         try {
             $settings = $request->input('settings', []);
             
+            foreach (Settings::$booleanSettings as $key) {
+                if (isset($settings[$key])) {
+                    $settings[$key] = (bool)$settings[$key];
+                }
+            }
+            
             foreach ($settings as $key => $value) {
                 Settings::updateOrCreateSetting($key, $value);
             }
             
             Settings::applySettings($settings);
+            
+            if (isset($settings['email_from_name']) || isset($settings['email_from_address'])) {
+                config([
+                    'mail.from.name' => $settings['email_from_name'] ?? config('mail.from.name'),
+                    'mail.from.address' => $settings['email_from_address'] ?? config('mail.from.address')
+                ]);
+            }
             
             return redirect()->route('settings.index')->with('success', 'Configurações atualizadas com sucesso!');
         } catch (Exception $e) {
