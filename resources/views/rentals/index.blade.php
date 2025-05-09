@@ -120,9 +120,9 @@
                                             <i class="fas fa-undo"></i>
                                         </a>
                                         @if($aluguel->ds_status == 'Atrasado')
-                                        <a href="{{ route('rentals.notification', $aluguel->id_aluguel) }}" 
+                                        <a href="#" 
                                            class="btn btn-sm btn-email"
-                                           onclick="return confirm('Enviar email de atraso novamente?')">
+                                           data-rental-id="{{ $aluguel->id_aluguel }}">
                                             <i class="fas fa-envelope"></i>  
                                         </a>
                                         @endif
@@ -155,6 +155,29 @@
 </div>
 @endsection
 
+<!-- Modal de confirmação para reenvio de e-mail de atraso -->
+<div class="modal" id="emailModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #fee2e2;">
+                <span style="font-size: 1.7rem; color: #ef4444; margin-right: 10px;"><i class="fas fa-envelope"></i></span>
+                <h5 class="modal-title" style="color: #ef4444;">Reenviar E-mail de Atraso</h5>
+                <button type="button" class="close" id="closeEmailModal">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <p style="font-size: 1.1rem; color: #b91c1c; margin-bottom: 20px;">
+                    <i class="fas fa-exclamation-triangle" style="color: #ef4444; margin-right: 8px;"></i>
+                    Deseja reenviar o e-mail de atraso para <span id="modalUserName"></span>?
+                </p>
+                <div style="display: flex; justify-content: center; gap: 20px;">
+                    <button class="btn btn-primary" id="confirmEmailSend"><i class="fas fa-paper-plane"></i> Sim</button>
+                    <button class="btn btn-secondary" id="cancelEmailSend">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -173,6 +196,37 @@
         
         toggleFilter.addEventListener('click', function() {
             filterContainer.style.display = filterContainer.style.display === 'none' ? 'block' : 'none';
+        });
+        
+        // Modal de confirmação de e-mail de atraso
+        let selectedRentalId = null;
+        const emailModal = document.getElementById('emailModal');
+        const closeEmailModal = document.getElementById('closeEmailModal');
+        const cancelEmailSend = document.getElementById('cancelEmailSend');
+        const confirmEmailSend = document.getElementById('confirmEmailSend');
+        document.querySelectorAll('.btn-email').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                selectedRentalId = btn.getAttribute('data-rental-id');
+                // Buscar o nome do usuário na mesma linha da tabela
+                var userName = btn.closest('tr').querySelector('td:nth-child(2) .user-link').textContent.trim();
+                document.getElementById('modalUserName').textContent = userName;
+                emailModal.style.display = 'block';
+            });
+        });
+        function closeModal() {
+            emailModal.style.display = 'none';
+            selectedRentalId = null;
+        }
+        closeEmailModal.addEventListener('click', closeModal);
+        cancelEmailSend.addEventListener('click', closeModal);
+        window.addEventListener('click', function(event) {
+            if (event.target === emailModal) closeModal();
+        });
+        confirmEmailSend.addEventListener('click', function() {
+            if (selectedRentalId) {
+                window.location.href = "{{ url('rentals/notification') }}/" + selectedRentalId;
+            }
         });
     });
 </script>

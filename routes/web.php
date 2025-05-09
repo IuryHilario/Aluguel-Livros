@@ -52,6 +52,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{id}/return', [AluguelController::class, 'return'])->name('rentals.return');
         Route::get('/{id}/renew', [AluguelController::class, 'renew'])->name('rentals.renew');
         Route::get('/{id}/notification', [AluguelController::class, 'sendNotification'])->name('rentals.notification');
+        Route::get('/notification/{id}', [App\Http\Controllers\AluguelController::class, 'sendNotification'])->name('rentals.notification');
     });
 
     // Rota de pesquisa global
