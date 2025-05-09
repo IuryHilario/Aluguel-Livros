@@ -15,8 +15,13 @@
 <div class="panel panel-modern">
     <div class="panel-header d-flex justify-content-between align-items-center">
         <div>
-            <h3 class="panel-title"><i class="fas fa-server me-2 text-primary"></i>Backups do Sistema</h3>
-            <p class="panel-subtitle">Gerencie os backups do seu sistema para proteção de dados</p>
+            <h3 class="panel-title d-flex align-items-center" style="gap: 0.75rem;">
+                <span class="d-flex align-items-center justify-content-center" style="background:#f0f4fa;border-radius:50%;width:2.5rem;height:2.5rem;margin-right:0.75rem;">
+                    <i class="fas fa-server text-primary" style="font-size:1.3rem;"></i>
+                </span>
+                <span>Backups do Sistema</span>
+            </h3>
+            <p class="panel-subtitle mt-2">Gerencie os backups do seu sistema para proteção de dados</p>
         </div>
         <div class="panel-actions">
             <form action="{{ route('settings.backup.create') }}" method="POST" class="d-inline">
@@ -105,43 +110,49 @@
             </div>
 
             @if(count($backups) > 0)
-                <div class="backup-list-card">
-                    <div class="backup-list-header">
-                        <h5><i class="fas fa-history me-2"></i>Backups Disponíveis</h5>
-                        <span class="total-backups">{{ count($backups) }} {{ count($backups) == 1 ? 'backup' : 'backups' }} encontrado(s)</span>
+                <div class="backup-list-card mt-4" style="box-shadow:0 2px 12px rgba(0,0,0,0.06);border-radius:0.75rem;overflow:hidden;">
+                    <div class="backup-list-header d-flex align-items-center justify-content-between" style="background:#f8f9fa;padding:1.25rem 1.5rem;border-bottom:1px solid #e9ecef;">
+                        <div class="d-flex align-items-center" style="gap:0.5rem;">
+                            <span class="d-flex align-items-center justify-content-center" style="background:#e7f1ff;border-radius:50%;width:2.2rem;height:2.2rem;margin-right:0.5rem;">
+                                <i class="fas fa-history text-primary" style="font-size:1.1rem;"></i>
+                            </span>
+                            <h5 class="mb-0" style="font-weight:600;font-size:1.05rem;">Backups Disponíveis</h5>
+                        </div>
+                        <span class="total-backups" style="font-size:0.95rem;color:#6c757d;">{{ count($backups) }} {{ count($backups) == 1 ? 'backup' : 'backups' }} encontrado(s)</span>
                     </div>
-                    
-                    <div class="table-responsive backup-table-wrapper">
-                        <table class="table table-hover backup-table">
+                    <div class="table-responsive backup-table-wrapper" style="padding:0;">
+                        <table class="table table-hover backup-table mb-0" style="background:#fff;">
                             <thead>
-                                <tr>
-                                    <th><i class="fas fa-file-archive me-1"></i> Nome do Arquivo</th>
-                                    <th><i class="fas fa-weight me-1"></i> Tamanho</th>
-                                    <th><i class="fas fa-calendar me-1"></i> Data de Criação</th>
-                                    <th class="text-center"><i class="fas fa-tools me-1"></i> Ações</th>
+                                <tr style="background:#f8f9fa;">
+                                    <th style="font-weight:600;color:#495057;border-top:none;padding:0.85rem 1.25rem;"><i class="fas fa-file-archive me-1"></i> Nome do Arquivo</th>
+                                    <th style="font-weight:600;color:#495057;border-top:none;padding:0.85rem 1.25rem;"><i class="fas fa-weight me-1"></i> Tamanho</th>
+                                    <th style="font-weight:600;color:#495057;border-top:none;padding:0.85rem 1.25rem;"><i class="fas fa-calendar me-1"></i> Data de Criação</th>
+                                    <th class="text-center" style="font-weight:600;color:#495057;border-top:none;padding:0.85rem 1.25rem;"><i class="fas fa-tools me-1"></i> Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($backups as $backup)
-                                <tr>
+                                <tr style="vertical-align:middle;">
                                     <td class="backup-filename">
-                                        <div class="filename-container">
-                                            <i class="fas fa-file-archive text-primary me-2"></i>
-                                            <span>{{ $backup['filename'] }}</span>
+                                        <div class="filename-container d-flex align-items-center" style="gap:0.5rem;">
+                                            <span class="d-flex align-items-center justify-content-center" style="background:#f0f4fa;border-radius:50%;width:2rem;height:2rem;">
+                                                <i class="fas fa-file-archive text-primary" style="font-size:1rem;"></i>
+                                            </span>
+                                            <span style="font-weight:500;">{{ $backup['filename'] }}</span>
                                         </div>
                                     </td>
-                                    <td>{{ $backup['size'] }}</td>
-                                    <td>{{ $backup['created_at'] }}</td>
+                                    <td style="font-size:0.98rem;">{{ $backup['size'] }}</td>
+                                    <td style="font-size:0.98rem;">{{ $backup['created_at'] }}</td>
                                     <td class="actions text-center">
-                                        <div class="btn-group" role="group">
-                                            <a href="{{ route('settings.backup.download', $backup['filename']) }}" class="btn btn-sm btn-info" title="Download">
-                                                <i class="fas fa-download"></i> Download
+                                        <div class="action-buttons">
+                                            <a href="{{ route('settings.backup.download', $backup['filename']) }}" class="btn btn-sm btn-primary btn-download" title="Download">
+                                                <i class="fas fa-download me-1"></i> Download
                                             </a>
-                                            <form action="{{ route('settings.backup.delete', $backup['filename']) }}" method="POST" class="d-inline delete-form">
+                                            <form action="{{ route('settings.backup.delete', $backup['filename']) }}" method="POST" class="d-inline delete-form ms-2">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger" title="Excluir">
-                                                    <i class="fas fa-trash"></i> Excluir
+                                                <button type="submit" class="btn btn-sm btn-outline-danger" title="Excluir">
+                                                    <i class="fas fa-trash me-1"></i> Excluir
                                                 </button>
                                             </form>
                                         </div>
