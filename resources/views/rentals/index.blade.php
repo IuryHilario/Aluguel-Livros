@@ -111,19 +111,19 @@
                                 <td>
                                     <div class="action-buttons">
                                         <a href="{{ route('rentals.show', $aluguel->id_aluguel) }}" 
-                                           class="btn btn-sm btn-primary">
-                                            <i class="fas fa-eye"></i> Detalhes
+                                           class="btn btn-sm btn-view">
+                                            <i class="fas fa-eye"></i>
                                         </a>
                                         <a href="{{ route('rentals.return', $aluguel->id_aluguel) }}" 
-                                           class="btn btn-sm btn-primary return-btn"
+                                           class="btn btn-sm btn-return"
                                            onclick="return confirm('Tem certeza que deseja marcar este livro como devolvido?')">
-                                            <i class="fas fa-undo"></i> Devolver
+                                            <i class="fas fa-undo"></i>
                                         </a>
                                         @if($aluguel->ds_status == 'Atrasado')
                                         <a href="{{ route('rentals.notification', $aluguel->id_aluguel) }}" 
-                                           class="btn btn-sm btn-primary return-btn"
+                                           class="btn btn-sm btn-email"
                                            onclick="return confirm('Enviar email de atraso novamente?')">
-                                            <i class="fas fa-envelope"></i> Email   
+                                            <i class="fas fa-envelope"></i>  
                                         </a>
                                         @endif
                                     </div>

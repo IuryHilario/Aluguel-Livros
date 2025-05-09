@@ -384,205 +384,168 @@
 
 /* Detalhes do usuário */
 .user-details {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: var(--shadow);
+    background: linear-gradient(120deg, #f8f3eb 60%, #fff 100%);
+    border-radius: 18px;
+    padding: 32px 28px 28px 28px;
+    box-shadow: 0 6px 32px rgba(67, 97, 238, 0.07), 0 1.5px 6px rgba(161,124,91,0.08);
+    margin-bottom: 32px;
 }
 
 .user-details .user-header {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    gap: 32px;
+    padding: 0 0 28px 0;
+    border-bottom: 2px solid var(--primary-light);
+    margin-bottom: 18px;
 }
 
 .user-details .user-avatar {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    background-color: var(--primary-light);
-    color: #fff;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
-    margin-right: 20px;
+    margin-right: 0;
+    box-shadow: 0 6px 24px rgba(67, 97, 238, 0.13);
+    border: 4px solid #fff;
+    position: relative;
+}
+.user-details .user-avatar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--primary-light, #f8f3eb);
+    z-index: 0;
+}
+.user-details .user-avatar span {
+    font-size: 2.6rem;
+    color: #fff;
+    font-weight: 700;
+    z-index: 1;
 }
 
+.user-details .user-header-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
 .user-details .user-name {
-    font-size: 24px;
+    font-size: 2.1rem;
     color: var(--primary-dark);
-    margin-bottom: 5px;
+    font-weight: 700;
+    margin-bottom: 2px;
 }
-
 .user-details .user-email {
-    color: var(--text-light);
-    font-size: 14px;
-}
-
-.user-details .user-info {
-    margin-top: 20px;
-}
-
-.user-details .info-item {
-    padding: 12px 0;
-    border-bottom: 1px solid var(--accent-color);
-    display: flex;
-}
-
-.user-details .info-item:last-child {
-    border-bottom: none;
-}
-
-.user-details .info-label {
-    font-weight: 600;
-    width: 150px;
-    color: var(--primary-dark);
-}
-
-.user-details .info-value {
-    flex: 1;
-}
-
-/* Estilos para a página de detalhes do usuário */
-.user-details {
-    background-color: #fff;
-    border-radius: 10px;
-}
-
-.user-header {
-    display: flex;
-    align-items: center;
-    padding: 25px;
-    border-bottom: 1px solid var(--accent-color);
-}
-
-.user-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 20px;
-    box-shadow: 0 4px 15px rgba(123, 93, 72, 0.3);
-}
-
-.user-avatar span {
-    font-size: 2rem;
-    color: #fff;
-    font-weight: 600;
-}
-
-.user-header-info {
-    flex: 1;
-}
-
-.user-name {
-    margin: 0 0 8px 0;
-    font-size: 1.8rem;
-    color: var(--primary-dark);
-}
-
-.user-email {
-    color: var(--text-light);
-    font-size: 1rem;
+    color: var(--primary-color);
+    font-size: 1.08rem;
     display: flex;
     align-items: center;
     gap: 8px;
     margin: 0;
+    font-weight: 500;
 }
 
 /* Cards de estatísticas do usuário */
 .user-stats {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    background-color: var(--primary-light, #f8f3eb);
-    border-radius: 8px;
-    margin: 20px;
+    gap: 24px;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    margin: 0 0 28px 0;
 }
 
 .stat-card {
     flex: 1;
     min-width: 180px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
+    padding: 22px 18px;
+    background: linear-gradient(120deg, #fff 80%, #f8f3eb 100%);
+    box-shadow: 0 2px 12px rgba(67, 97, 238, 0.06);
+    border-radius: 14px;
     display: flex;
     align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1.5px solid var(--primary-light);
+    position: relative;
 }
 
 .stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(67, 97, 238, 0.13);
 }
 
 .stat-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
     background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 15px;
+    margin-right: 18px;
+    box-shadow: 0 2px 8px rgba(67, 97, 238, 0.10);
 }
 
 .stat-icon i {
-    font-size: 22px;
-    color: white;
+    font-size: 26px;
+    color: #fff;
 }
 
 .stat-content {
     display: flex;
     flex-direction: column;
+    gap: 2px;
 }
 
 .stat-value {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 800;
     color: var(--primary-dark);
 }
 
 .stat-label {
-    font-size: 14px;
+    font-size: 1rem;
     color: var(--text-light);
+    font-weight: 500;
 }
 
 /* Seção de informações */
 .info-section {
-    margin: 20px;
+    margin: 0 0 28px 0;
 }
 
 .info-section h3 {
-    border-bottom: 2px solid var(--accent-color);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 8px;
+    margin-bottom: 18px;
     color: var(--primary-dark);
-    font-size: 1.3rem;
+    font-size: 1.18rem;
     display: flex;
     align-items: center;
     gap: 10px;
+    font-weight: 700;
 }
 
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
 }
 
 .info-item {
     display: flex;
-    background-color: #fcfaf7;
-    padding: 15px;
+    background: #fff;
+    padding: 14px 18px;
     border-radius: 8px;
-    border-left: 3px solid var(--primary-light);
+    border-left: 4px solid var(--primary-light);
     align-items: center;
+    box-shadow: 0 1.5px 6px rgba(161,124,91,0.07);
 }
 
 .info-label {
@@ -591,7 +554,8 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    width: 180px;
+    width: 140px;
+    font-size: 1rem;
 }
 
 .info-label i {
@@ -601,44 +565,46 @@
 .info-value {
     flex: 1;
     color: var(--text-dark);
+    font-size: 1.05rem;
 }
 
 .user-rentals {
-    margin: 20px;
+    margin: 0 0 18px 0;
 }
 
 .user-rentals h3 {
-    border-bottom: 2px solid var(--accent-color);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 8px;
+    margin-bottom: 18px;
     color: var(--primary-dark);
-    font-size: 1.3rem;
+    font-size: 1.18rem;
+    font-weight: 700;
 }
 
-/* Estilos para os cards de aluguel */
 .rentals-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    margin-top: 15px;
+    gap: 14px;
+    margin-top: 0;
 }
 
 .rental-card {
     display: flex;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    background: linear-gradient(120deg, #fff 80%, #f8f3eb 100%);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(67, 97, 238, 0.07);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1.5px solid var(--primary-light);
 }
 
 .rental-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 6px 18px rgba(67, 97, 238, 0.13);
 }
 
 .rental-status-indicator {
-    width: 5px;
+    width: 7px;
     min-height: 100%;
 }
 
@@ -656,29 +622,31 @@
 
 .rental-content {
     flex: 1;
-    padding: 15px;
+    padding: 16px 18px;
 }
 
 .rental-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .rental-title {
-    font-weight: 600;
-    font-size: 1.1rem;
+    font-weight: 700;
+    font-size: 1.08rem;
     color: var(--primary-dark);
 }
 
 .rental-badge {
     display: inline-flex;
-    padding: 4px 10px;
+    padding: 4px 14px;
     border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-size: 0.92rem;
+    font-weight: 700;
     color: white;
+    box-shadow: 0 1px 4px rgba(67, 97, 238, 0.10);
+    letter-spacing: 0.5px;
 }
 
 .rental-badge.active {
@@ -697,18 +665,19 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    gap: 12px;
 }
 
 .rental-details {
     color: var(--text-light);
-    font-size: 0.9rem;
+    font-size: 0.98rem;
 }
 
 .rental-detail {
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 7px;
 }
 
 .rental-detail i {
@@ -725,14 +694,15 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 6px 12px;
+    padding: 7px 16px;
     background-color: #f8f3eb;
     color: var(--primary-color);
-    border-radius: 6px;
-    font-size: 0.85rem;
+    border-radius: 7px;
+    font-size: 0.95rem;
     text-decoration: none;
-    border: 1px solid var(--primary-light);
-    transition: all 0.2s ease;
+    border: 1.5px solid var(--primary-light);
+    transition: all 0.2s;
+    font-weight: 600;
 }
 
 .btn-small:hover {
@@ -746,20 +716,22 @@
     align-items: center;
     justify-content: center;
     padding: 40px 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    margin-top: 15px;
+    background: linear-gradient(120deg, #fff 80%, #f8f3eb 100%);
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 0 1.5px 6px rgba(161,124,91,0.07);
 }
 
 .empty-rentals i {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: var(--primary-light);
-    margin-bottom: 15px;
-    opacity: 0.6;
+    margin-bottom: 10px;
+    opacity: 0.7;
 }
 
 .empty-rentals p {
     color: var(--text-light);
+    font-size: 1.08rem;
 }
 
 /* Responsividade */
@@ -828,5 +800,42 @@
     
     .info-label {
         margin-bottom: 8px;
+    }
+}
+
+@media (max-width: 900px) {
+    .user-header {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 0 0 18px 0;
+    }
+    .user-avatar {
+        margin-bottom: 10px;
+    }
+    .user-stats {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .user-details {
+        padding: 12px 4px 8px 4px;
+    }
+    .user-header {
+        padding: 0 0 10px 0;
+    }
+    .stat-card {
+        padding: 14px 8px;
+    }
+    .info-item {
+        padding: 10px 8px;
+    }
+    .rental-content {
+        padding: 10px 8px;
     }
 }

@@ -1659,3 +1659,36 @@
         grid-template-columns: 1fr;
     }
 }
+
+.btn-view {
+    border: 2px solid #f59e0b;
+    background: #f59e0b;
+    color: #fff;
+}
+
+.btn-view:hover {
+    background: #d97706;
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+}
+
+.btn-return {
+    border: 2px solid #10b981;
+    background: #10b981;
+    color: #fff;
+}
+
+.btn-return:hover {
+    background: #059669;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+}
+
+.btn-email {
+    border: 2px solid #ef4444;
+    background: #ef4444;
+    color: #fff;
+}
+.btn-email:hover {
+    background: #dc2626;
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+

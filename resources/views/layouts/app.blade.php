@@ -50,7 +50,6 @@ use Carbon\Carbon;
                                 ->limit(5)
                                 ->get();
                         @endphp
-                        <span class="badge">{{ count($overdueRentals) }}</span>
                         <div class="notification-menu">
                             <div class="notification-header">
                                 <h3>Notificações de Atraso</h3>
