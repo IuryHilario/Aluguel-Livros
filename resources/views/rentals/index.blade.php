@@ -121,9 +121,9 @@
                                         </a>
                                         @if($aluguel->ds_status == 'Atrasado')
                                         <a href="{{ route('rentals.notification', $aluguel->id_aluguel) }}" 
-                                           class="btn btn-sm btn-notify"
+                                           class="btn btn-sm btn-email"
                                            onclick="return confirm('Enviar email de atraso novamente?')">
-                                            <i class="fas fa-envelope"></i> 
+                                            <i class="fas fa-envelope"></i>  
                                         </a>
                                         @endif
                                     </div>

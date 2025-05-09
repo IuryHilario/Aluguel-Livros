@@ -25,13 +25,50 @@
                     </div>
                 </div>
                 <div class="nav-right">
-                    <div class="nav-item">
-                        <i class="fas fa-bell"></i>
-                        <span class="badge">3</span>
-                    </div>
-                    <div class="nav-item">
-                        <i class="fas fa-envelope"></i>
-                        <span class="badge">5</span>
+                    <div class="nav-item notification-dropdown">
+                        <i class="fas fa-bell notification-icon"></i>
+                        @php
+                            $overdueRentals = Aluguel::with(['usuario', 'livro'])
+                                ->where('ds_status', Aluguel::STATUS_ATRASADO)
+                                ->orWhere(function($query) {
+                                    $query->where('ds_status', Aluguel::STATUS_ATIVO)
+                                          ->where('dt_devolucao', '<', Carbon::now()->format('Y-m-d'));
+                                })
+                                ->orderBy('dt_devolucao', 'DESC')
+                                ->limit(5)
+                                ->get();
+                        @endphp
+                        <div class="notification-menu">
+                            <div class="notification-header">
+                                <h3>Notificações de Atraso</h3>
+                            </div>
+                            <div class="notification-list">
+                                @if(count($overdueRentals) > 0)
+                                    @foreach($overdueRentals as $rental)
+                                        <a href="{{ route('rentals.show', $rental->id_aluguel) }}" class="notification-item">
+                                            <div class="notification-icon">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                            </div>
+                                            <div class="notification-content">
+                                                <div class="notification-title">Aluguel de {{ $rental->usuario->nome }} está atrasado</div>
+                                                <div class="notification-desc">Livro: {{ $rental->livro->titulo }}</div>
+                                                <div class="notification-time">{{ $rental->diasAtraso() }} dias de atraso</div>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                @else
+                                    <div class="empty-notifications">
+                                        <i class="fas fa-check-circle"></i>
+                                        <p>Não há aluguéis em atraso</p>
+                                    </div>
+                                @endif
+                            </div>
+                            @if(count($overdueRentals) > 0)
+                                <div class="notification-footer">
+                                    <a href="{{ route('rentals.index') }}?status=Atrasado">Ver todos os atrasos</a>
+                                </div>
+                            @endif
+                        </div>
                     </div>
                     <div class="nav-user">
                         <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name ?? 'User' }}&background=7b5d48&color=fff" alt="User">
