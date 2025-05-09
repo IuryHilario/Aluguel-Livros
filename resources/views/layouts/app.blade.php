@@ -1,3 +1,8 @@
+<?php
+use App\Models\Aluguel;
+use Carbon\Carbon;
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Aluga Livros')</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    @vite(['resources/css/dashboard/dashboard.css'])
+    @vite(['resources/css/dashboard/dashboard.css', 'resources/css/global/search.css'])
     @stack('styles')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css">
 </head>
@@ -19,9 +24,16 @@
                     <button id="sidebar-toggle" class="sidebar-toggle">
                         <i class="fas fa-bars"></i>
                     </button>
-                    <div class="search-box">
-                        <input type="text" placeholder="Pesquisar...">
-                        <i class="fas fa-search"></i>
+                    <div class="search-container">
+                        <div class="search-box">
+                            <input type="text" id="global-search" placeholder="Pesquisar livros/usuários..." autocomplete="off">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="search-results-dropdown" id="search-results-dropdown">
+                            <div class="search-results-container">
+                                <div id="search-results-content"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="nav-right">
@@ -38,6 +50,10 @@
                                 ->limit(5)
                                 ->get();
                         @endphp
+<<<<<<< HEAD
+=======
+                        <span class="badge">{{ count($overdueRentals) }}</span>
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
                         <div class="notification-menu">
                             <div class="notification-header">
                                 <h3>Notificações de Atraso</h3>
@@ -112,9 +128,30 @@
                     });
                 }
             });
+
+            const notificationDropdown = document.querySelector('.notification-dropdown');
+            const notificationIcon = notificationDropdown.querySelector('.fa-bell');
+            
+            notificationIcon.addEventListener('click', function(e) {
+                e.stopPropagation();
+                notificationDropdown.classList.toggle('show');
+            });
+            
+            document.querySelectorAll('.notification-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!notificationDropdown.contains(e.target)) {
+                    notificationDropdown.classList.remove('show');
+                }
+            });
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @vite(['resources/js/global/search.js'])
     @stack('scripts')
 </body>
 </html>

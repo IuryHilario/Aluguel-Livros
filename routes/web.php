@@ -9,6 +9,7 @@ use App\Http\Controllers\AluguelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\SearchController;
 
 // Rota inicial redirecionando para o dashboard
 Route::get('/', function () {
@@ -53,6 +54,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{id}/notification', [AluguelController::class, 'sendNotification'])->name('rentals.notification');
     });
 
+    // Rota de pesquisa global
+    Route::get('/search', [SearchController::class, 'search'])->name('search.global');
+
     // Users routes
     Route::prefix('users')->group(function () {
         Route::get('/', [UsuarioController::class, 'index'])->name('users.index');
@@ -87,3 +91,6 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/backup/delete/{filename}', [SettingsController::class, 'deleteBackup'])->name('backup.delete');
     });
 });
+
+// Rotas para pesquisa global
+Route::get('/api/search', [SearchController::class, 'search'])->name('api.search');

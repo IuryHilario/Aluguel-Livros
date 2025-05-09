@@ -1,17 +1,30 @@
+<<<<<<< HEAD
 /* Escopo restrito para search global na navbar */
 .navbar .search-container {
+=======
+/* Estilos para a caixa de pesquisa global e resultados */
+.search-container {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     position: relative;
     width: 100%;
     max-width: 450px;
     z-index: 1000;
 }
 
+<<<<<<< HEAD
 .navbar .search-box {
+=======
+.search-box {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     position: relative;
     width: 100%;
 }
 
+<<<<<<< HEAD
 .navbar .search-box input {
+=======
+.search-box input {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     width: 100%;
     padding: 10px 15px 10px 40px;
     border-radius: 8px;
@@ -21,13 +34,21 @@
     height: 40px;
 }
 
+<<<<<<< HEAD
 .navbar .search-box input:focus {
+=======
+.search-box input:focus {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(123, 93, 72, 0.2);
     outline: none;
 }
 
+<<<<<<< HEAD
 .navbar .search-box .fa-search {
+=======
+.search-box .fa-search {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     position: absolute;
     left: 15px;
     top: 50%;
@@ -36,7 +57,11 @@
     pointer-events: none;
 }
 
+<<<<<<< HEAD
 .navbar .search-results-dropdown {
+=======
+.search-results-dropdown {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     position: absolute;
     top: calc(100% + 5px);
     left: 0;
@@ -51,6 +76,7 @@
     display: none;
 }
 
+<<<<<<< HEAD
 .navbar .search-results-container {
     padding: 10px;
     display: flex;
@@ -66,6 +92,17 @@
 }
 
 .navbar .search-category-title {
+=======
+.search-results-container {
+    padding: 10px;
+}
+
+.search-category {
+    margin-bottom: 15px;
+}
+
+.search-category-title {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     color: var(--gray-500);
     font-weight: 600;
     font-size: 0.85rem;
@@ -76,23 +113,38 @@
     letter-spacing: 0.5px;
 }
 
+<<<<<<< HEAD
 .navbar .search-result-item {
+=======
+.search-result-item {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     padding: 12px 16px;
     cursor: pointer;
     transition: all 0.2s ease;
     display: flex;
+<<<<<<< HEAD
     flex-direction: column;
+=======
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     align-items: flex-start;
     border-radius: 6px;
     margin-bottom: 4px;
 }
 
+<<<<<<< HEAD
 .navbar .search-result-item:hover {
+=======
+.search-result-item:hover {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     background-color: var(--gray-100);
     transform: translateY(-1px);
 }
 
+<<<<<<< HEAD
 .navbar .search-result-icon {
+=======
+.search-result-icon {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,11 +156,19 @@
     color: var(--primary-color);
 }
 
+<<<<<<< HEAD
 .navbar .search-result-content {
     flex: 1;
 }
 
 .navbar .search-result-title {
+=======
+.search-result-content {
+    flex: 1;
+}
+
+.search-result-title {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     font-weight: 600;
     margin-bottom: 4px;
     color: var(--gray-800);
@@ -116,31 +176,51 @@
     align-items: center;
 }
 
+<<<<<<< HEAD
 .navbar .search-result-subtitle {
+=======
+.search-result-subtitle {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     font-size: 0.85rem;
     color: var(--gray-500);
     line-height: 1.4;
 }
 
+<<<<<<< HEAD
 .navbar .search-no-results {
+=======
+.search-no-results {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     padding: 25px 16px;
     text-align: center;
     color: var(--gray-500);
 }
 
+<<<<<<< HEAD
 .navbar .search-no-results i {
+=======
+.search-no-results i {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     font-size: 24px;
     margin-bottom: 10px;
     opacity: 0.6;
 }
 
+<<<<<<< HEAD
 .navbar .search-loading {
+=======
+.search-loading {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     padding: 20px;
     text-align: center;
     color: var(--gray-500);
 }
 
+<<<<<<< HEAD
 .navbar .search-loading i {
+=======
+.search-loading i {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     animation: spin 1s linear infinite;
     font-size: 20px;
     margin-bottom: 8px;
@@ -151,6 +231,10 @@
     100% { transform: rotate(360deg); }
 }
 
+<<<<<<< HEAD
 .navbar .search-book-icon, .navbar .search-user-icon {
+=======
+.search-book-icon, .search-user-icon {
+>>>>>>> 40d1f0c1cfe9921ebe650e8bc6e1a57645675b33
     color: var(--primary-color);
 }
