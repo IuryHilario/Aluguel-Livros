@@ -228,6 +228,17 @@ select.form-control {
     background-color: var(--primary-light);
 }
 
+.btn-backup-dark {
+    background-color: #3c2a1a;
+    color: #fff;
+    border: none;
+}
+
+.btn-backup-dark:hover {
+    background-color: #2a1d12;
+    color: #fff;
+}
+
 /* Backup actions */
 .backup-actions {
     display: flex;

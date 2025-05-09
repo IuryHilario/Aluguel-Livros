@@ -157,38 +157,42 @@
             <div class="tab-content" id="backup-content">
                 <div class="settings-section">
                     <h4>Backup do Sistema</h4>
-                    
-                    <div class="form-group checkbox-group">
-                        <input type="hidden" name="settings[enable_auto_backup]" value="0">
-                        <input type="checkbox" id="enable_auto_backup" name="settings[enable_auto_backup]" value="1"
-                               {{ isset($settings['enable_auto_backup']) && $settings['enable_auto_backup'] ? 'checked' : '' }}>
-                        <label for="enable_auto_backup">Ativar backup automático</label>
-                    </div>
-                    
-                    <div id="backup-settings" style="{{ isset($settings['enable_auto_backup']) && $settings['enable_auto_backup'] ? '' : 'display: none;' }}">
-                        <div class="form-group">
-                            <label for="backup_frequency">Frequência de backup</label>
-                            <select id="backup_frequency" name="settings[backup_frequency]" class="form-control">
-                                <option value="daily" {{ ($settings['backup_frequency'] ?? 'weekly') == 'daily' ? 'selected' : '' }}>Diário</option>
-                                <option value="weekly" {{ ($settings['backup_frequency'] ?? 'weekly') == 'weekly' ? 'selected' : '' }}>Semanal</option>
-                                <option value="monthly" {{ ($settings['backup_frequency'] ?? 'weekly') == 'monthly' ? 'selected' : '' }}>Mensal</option>
-                            </select>
+
+                    <div class="settings-section" style="margin-bottom: 20px;">
+                        <div class="form-group checkbox-group">
+                            <input type="hidden" name="settings[enable_auto_backup]" value="0">
+                            <input type="checkbox" id="enable_auto_backup" name="settings[enable_auto_backup]" value="1"
+                                   {{ isset(
+                                       $settings['enable_auto_backup']) && $settings['enable_auto_backup'] ? 'checked' : '' }}>
+                            <label for="enable_auto_backup">Ativar backup automático</label>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="backup_retention">Número de backups a manter</label>
-                            <input type="number" id="backup_retention" name="settings[backup_retention]" class="form-control" 
-                                   value="{{ $settings['backup_retention'] ?? 5 }}" min="1" max="30">
-                            <small class="form-text text-muted">Backups mais antigos serão automaticamente excluídos quando novos forem criados.</small>
+
+                        <div id="backup-settings" style="{{ isset($settings['enable_auto_backup']) && $settings['enable_auto_backup'] ? '' : 'display: none;' }}">
+                            <div class="form-group">
+                                <label for="backup_frequency">Frequência de backup</label>
+                                <select id="backup_frequency" name="settings[backup_frequency]" class="form-control">
+                                    <option value="daily" {{ ($settings['backup_frequency'] ?? 'weekly') == 'daily' ? 'selected' : '' }}>Diário</option>
+                                    <option value="weekly" {{ ($settings['backup_frequency'] ?? 'weekly') == 'weekly' ? 'selected' : '' }}>Semanal</option>
+                                    <option value="monthly" {{ ($settings['backup_frequency'] ?? 'weekly') == 'monthly' ? 'selected' : '' }}>Mensal</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="backup_retention">Número de backups a manter</label>
+                                <input type="number" id="backup_retention" name="settings[backup_retention]" class="form-control"
+                                       value="{{ $settings['backup_retention'] ?? 5 }}" min="1" max="30">
+                                <small class="form-text text-muted">Backups mais antigos serão automaticamente excluídos quando novos forem criados.</small>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="form-group mt-4">
-                        <h5>Ações de Backup Manual</h5>
-                        <p>Você pode criar backups manualmente ou gerenciar os existentes.</p>
-                        <a href="{{ route('settings.backups') }}" class="btn btn-outline-primary">
-                            <i class="fas fa-database"></i> Gerenciar Backups
-                        </a>
+
+                    <div class="settings-section" style="background: var(--gray-100); border-left: 4px solid var(--primary-color); margin-bottom: 0;">
+                        <h5 style="margin-top:0; color: var(--primary-color); font-size: 17px;">Ações de Backup Manual</h5>
+                        <p style="margin-bottom: 18px; color: var(--text-light);">Você pode criar backups manualmente ou gerenciar os existentes.</p>
+                        <div class="backup-actions">
+                            <a href="{{ route('settings.backups') }}" class="btn btn-backup-dark">
+                                <i class="fas fa-database"></i> Gerenciar Backups
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
