@@ -60,7 +60,7 @@
             <!-- Datas -->
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="dt_aluguel">Data de Retirada</label>
+                    <label for="dt_aluguel">Data Retirada</label>
                     <input type="date" name="dt_aluguel" id="dt_aluguel" class="form-control" 
                            value="{{ date('Y-m-d') }}" required>
                     @error('dt_aluguel')
@@ -68,7 +68,7 @@
                     @enderror
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="dt_devolucao">Data de Devolução</label>
+                    <label for="dt_devolucao">Data Devolução</label>
                     <input type="date" name="dt_devolucao" id="dt_devolucao" class="form-control" 
                            value="{{ date('Y-m-d', strtotime('+' . ($settings['default_loan_period'] ?? 14) . ' days')) }}" required>
                     @error('dt_devolucao')
