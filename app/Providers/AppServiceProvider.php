@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        date_default_timezone_set('America/Sao_Paulo');
+        \Carbon\Carbon::setLocale('pt_BR');
+
         // Compartilha as configurações com todas as views
         View::composer('*', function ($view) {
             $settings = $this->getAllSettings();
@@ -34,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
     private function getAllSettings()
     {
         // Verifica se a tabela existe para evitar erros durante migrações
-        if (!\Schema::hasTable('configuracoes')) {
+        if (!Schema::hasTable('configuracoes')) {
             return [];
         }
 
