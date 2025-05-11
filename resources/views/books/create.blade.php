@@ -21,7 +21,7 @@
             
             <div class="form-group">
                 <label for="titulo">Título do Livro *</label>
-                <input type="text" name="titulo" id="titulo" class="form-control @error('titulo') is-invalid @enderror" 
+                <input type="text" name="titulo" id="titulo" class="form-control @error('titulo') is-invalid @enderror" autocomplete="off"
                     value="{{ old('titulo') }}" required>
                 @error('titulo')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -30,7 +30,7 @@
             
             <div class="form-group">
                 <label for="autor">Autor *</label>
-                <input type="text" name="autor" id="autor" class="form-control @error('autor') is-invalid @enderror" 
+                <input type="text" name="autor" id="autor" class="form-control @error('autor') is-invalid @enderror" autocomplete="off"
                     value="{{ old('autor') }}" required>
                 @error('autor')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -39,7 +39,7 @@
             
             <div class="form-group">
                 <label for="editor">Editora</label>
-                <input type="text" name="editor" id="editor" class="form-control @error('editor') is-invalid @enderror" 
+                <input type="text" name="editor" id="editor" class="form-control @error('editor') is-invalid @enderror" autocomplete="off"
                     value="{{ old('editor') }}">
                 @error('editor')
                     <div class="invalid-feedback">{{ $message }}</div>
