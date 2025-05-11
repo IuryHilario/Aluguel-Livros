@@ -31,7 +31,7 @@
                 <div class="filter-row">
                     <div class="filter-column">
                         <label for="search">Pesquisar</label>
-                        <input type="text" id="search" name="search" value="{{ request('search') }}" class="form-control" placeholder="Nome, email ou telefone">
+                        <input type="text" id="search" name="search" value="{{ request('search') }}" class="form-control" placeholder="Nome, email ou telefone" autocomplete="off">
                     </div>
                     <div class="filter-column">
                         <label for="order_by">Ordenar por</label>
