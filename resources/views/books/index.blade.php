@@ -27,19 +27,19 @@
             <div class="filter-row">
                 <div class="filter-column">
                     <label for="titulo">Título</label>
-                    <input type="text" id="titulo" name="titulo" class="form-control" placeholder="Título do livro" value="{{ request('titulo') }}">
+                    <input type="text" id="titulo" name="titulo" class="form-control" placeholder="Título do livro" value="{{ request('titulo') }}" autocomplete="off">
                 </div>
                 <div class="filter-column">
                     <label for="autor">Autor</label>
-                    <input type="text" id="autor" name="autor" class="form-control" placeholder="Nome do autor" value="{{ request('autor') }}">
+                    <input type="text" id="autor" name="autor" class="form-control" placeholder="Nome do autor" value="{{ request('autor') }}" autocomplete="off">
                 </div>
                 <div class="filter-column">
                     <label for="editor">Editora</label>
-                    <input type="text" id="editor" name="editor" class="form-control" placeholder="Nome da editora" value="{{ request('editor') }}">
+                    <input type="text" id="editor" name="editor" class="form-control" placeholder="Nome da editora" value="{{ request('editor') }}" autocomplete="off">
                 </div>
                 <div class="filter-column">
                     <label for="ano_publicacao">Ano de Publicação</label>
-                    <input type="number" id="ano_publicacao" name="ano_publicacao" class="form-control" placeholder="Ano" value="{{ request('ano_publicacao') }}">
+                    <input type="number" id="ano_publicacao" name="ano_publicacao" class="form-control" placeholder="Ano" value="{{ request('ano_publicacao') }}" autocomplete="off">
                 </div>
                 <div class="filter-actions">
                     <button type="submit" class="btn btn-primary">Filtrar</button>

@@ -36,17 +36,17 @@
             
             <div class="form-group">
                 <label for="nome">Nome completo <span class="required">*</span></label>
-                <input type="text" id="nome" name="nome" value="{{ old('nome', $usuario->nome) }}" class="form-control" required>
+                <input type="text" id="nome" name="nome" value="{{ old('nome', $usuario->nome) }}" class="form-control" autocomplete="off" required>
             </div>
             
             <div class="form-group">
                 <label for="email">E-mail <span class="required">*</span></label>
-                <input type="email" id="email" name="email" value="{{ old('email', $usuario->email) }}" class="form-control" required>
+                <input type="email" id="email" name="email" value="{{ old('email', $usuario->email) }}" class="form-control" autocomplete="off" required>
             </div>
             
             <div class="form-group">
                 <label for="telefone">Telefone</label>
-                <input type="tel" id="telefone" name="telefone" value="{{ old('telefone', $usuario->telefone) }}" class="form-control" placeholder="(00) 00000-0000">
+                <input type="tel" id="telefone" name="telefone" value="{{ old('telefone', $usuario->telefone) }}" class="form-control" autocomplete="off" placeholder="(00) 00000-0000">
             </div>
             
             <div class="form-group">
