@@ -39,7 +39,7 @@
                     
                     <div class="form-group">
                         <label for="system_name">Nome da Biblioteca</label>
-                        <input type="text" id="system_name" name="settings[system_name]" class="form-control" 
+                        <input type="text" id="system_name" name="settings[system_name]" class="form-control" autocomplete="off" 
                                value="{{ $settings['system_name'] ?? 'Aluga Livros' }}">
                     </div>
                     
@@ -118,13 +118,13 @@
                     <div class="email-notification-settings" id="email-settings" style="{{ isset($settings['enable_email_notifications']) && $settings['enable_email_notifications'] ? '' : 'display: none;' }}">
                         <div class="form-group">
                             <label for="email_from_name">Nome de remetente</label>
-                            <input type="text" id="email_from_name" name="settings[email_from_name]" class="form-control" 
+                            <input type="text" id="email_from_name" name="settings[email_from_name]" class="form-control" autocomplete="off"
                                    value="{{ $settings['email_from_name'] ?? 'Aluga Livros' }}">
                         </div>
                         
                         <div class="form-group">
                             <label for="email_from_address">E-mail de remetente</label>
-                            <input type="email" id="email_from_address" name="settings[email_from_address]" class="form-control" 
+                            <input type="email" id="email_from_address" name="settings[email_from_address]" class="form-control"   autocomplete="off"
                                    value="{{ $settings['email_from_address'] ?? 'noreply@alugalivros.com' }}">
                         </div>
                     </div>

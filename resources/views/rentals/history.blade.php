@@ -24,11 +24,11 @@
             <div class="filter-row">
                 <div class="filter-column">
                     <label for="user">Usuário</label>
-                    <input type="text" id="user" name="user" class="form-control" placeholder="Nome do usuário" value="{{ request('user') }}">
+                    <input type="text" id="user" name="user" class="form-control" placeholder="Nome do usuário" value="{{ request('user') }}" autocomplete="off">
                 </div>
                 <div class="filter-column">
                     <label for="book">Livro</label>
-                    <input type="text" id="book" name="book" class="form-control" placeholder="Título do livro" value="{{ request('book') }}">
+                    <input type="text" id="book" name="book" class="form-control" placeholder="Título do livro" value="{{ request('book') }}" autocomplete="off">
                 </div>
                 <div class="filter-column">
                     <label for="start_date">Data Inicial</label>
