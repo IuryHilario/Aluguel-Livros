@@ -41,7 +41,7 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <label for="name">Nome Completo</label>
-                            <input type="text" id="name" name="name" value="{{ old('name', Auth::user()->name) }}" required autofocus />
+                            <input type="text" id="name" name="name" value="{{ old('name', Auth::user()->name) }}" required autofocus autocomplete="off"/>
                             @error('name')
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
@@ -49,7 +49,7 @@
 
                         <div class="form-group">
                             <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" value="{{ old('email', Auth::user()->email) }}" required />
+                            <input type="email" id="email" name="email" value="{{ old('email', Auth::user()->email) }}" required autocomplete="off" />
                             @error('email')
                                 <span class="error-message">{{ $message }}</span>
                             @enderror

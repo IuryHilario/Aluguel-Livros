@@ -34,17 +34,17 @@
             @csrf
             <div class="form-group">
                 <label for="nome">Nome completo <span class="required">*</span></label>
-                <input type="text" id="nome" name="nome" value="{{ old('nome') }}" class="form-control" required>
+                <input type="text" id="nome" name="nome" value="{{ old('nome') }}" class="form-control" required autocomplete="off">
             </div>
             
             <div class="form-group">
                 <label for="email">E-mail <span class="required">*</span></label>
-                <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control" required>
+                <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control" required autocomplete="off">
             </div>
             
             <div class="form-group">
                 <label for="telefone">Telefone</label>
-                <input type="tel" id="telefone" name="telefone" value="{{ old('telefone') }}" class="form-control" placeholder="(00) 00000-0000">
+                <input type="tel" id="telefone" name="telefone" value="{{ old('telefone') }}" class="form-control" placeholder="(00) 00000-0000" autocomplete="off">
             </div>
             
             <div class="form-group">
