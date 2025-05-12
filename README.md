@@ -33,7 +33,7 @@ O sistema é administrado exclusivamente por um Administrador que gerencia todos
 
    ```bash
    git clone https://github.com/IuryHilario/Aluguel-Livros.git
-   cd aluga-livros
+   cd Aluguel-Livros
    ```
 
 2. Instale as dependências do PHP:
