@@ -32,7 +32,7 @@ O sistema é administrado exclusivamente por um Administrador que gerencia todos
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/aluga-livros.git
+   git clone https://github.com/IuryHilario/Aluguel-Livros.git
    cd aluga-livros
    ```
 
