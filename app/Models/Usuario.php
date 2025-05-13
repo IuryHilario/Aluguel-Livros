@@ -17,9 +17,7 @@ class Usuario extends Model
     protected $fillable = [
         'nome',
         'email',
-        'telefone',
-        'endereco',
-        'documento'
+        'telefone'
     ];
 
     public function alugueis()
