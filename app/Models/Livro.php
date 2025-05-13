@@ -64,4 +64,19 @@ class Livro extends Model
             ->limit($limit)
             ->get();
     }
+
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($livro) {
+            if ($livro->quantidade < 0) {
+                throw new \InvalidArgumentException('A quantidade não pode ser negativa.');
+            }
+        });
+        static::updating(function ($livro) {
+            if ($livro->quantidade < 0) {
+                throw new \InvalidArgumentException('A quantidade não pode ser negativa.');
+            }
+        });
+    }
 }
