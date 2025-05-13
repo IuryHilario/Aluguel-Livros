@@ -94,7 +94,7 @@
                         <form action="{{ route('books.destroy', $livro->id_livro) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger" title="Excluir" onclick="return confirm('Tem certeza que deseja excluir este livro?')">
+                            <button type="submit" class="btn btn-sm btn-danger btn-delete-book" title="Excluir">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
@@ -124,6 +124,10 @@
 </div>
 
 @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@endpush
+
+@push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const toggleFilter = document.getElementById('toggleFilter');
@@ -131,8 +135,28 @@
         
         toggleFilter.addEventListener('click', function() {
             filterContainer.style.display = filterContainer.style.display === 'none' ? 'block' : 'none';
+    });
+    
+
+    document.querySelectorAll('.btn-delete-book').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const form = btn.closest('form');
+            Swal.fire({
+                title: 'Excluir Livro',
+                text: 'Tem certeza que deseja excluir este livro?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sim, excluir',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
         });
     });
+});
 </script>
 @endpush
 @endsection

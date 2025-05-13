@@ -115,8 +115,7 @@
                                             <i class="fas fa-eye"></i>
                                         </a>
                                         <a href="{{ route('rentals.return', $aluguel->id_aluguel) }}" 
-                                           class="btn btn-sm btn-return"
-                                           onclick="return confirm('Tem certeza que deseja marcar este livro como devolvido?')">
+                                           class="btn btn-sm btn-return">
                                             <i class="fas fa-undo"></i>
                                         </a>
                                         @if($aluguel->ds_status == 'Atrasado')
@@ -179,6 +178,10 @@
 </div>
 
 @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@endpush
+
+@push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const toggleFilter = document.getElementById('toggleFilter');
@@ -227,6 +230,25 @@
             if (selectedRentalId) {
                 window.location.href = "{{ url('rentals/notification') }}/" + selectedRentalId;
             }
+        });
+        
+        document.querySelectorAll('.btn-return').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const href = btn.getAttribute('href');
+                Swal.fire({
+                    title: 'Confirmar Devolução',
+                    text: 'Tem certeza que deseja marcar este livro como devolvido?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Confirmar',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = href;
+                    }
+                });
+            });
         });
     });
 </script>

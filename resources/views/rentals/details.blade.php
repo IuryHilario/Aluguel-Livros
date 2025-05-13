@@ -26,11 +26,11 @@
         <div class="header-actions">
             @if($aluguel->ds_status != 'Devolvido')
                 @if($aluguel->podeRenovar())
-                <a href="{{ route('rentals.renew', $aluguel->id_aluguel) }}" class="action-button renew-button" onclick="return confirm('Tem certeza que deseja renovar este empréstimo?')">
+                <a href="{{ route('rentals.renew', $aluguel->id_aluguel) }}" class="action-button renew-button">
                     <i class="fas fa-sync-alt"></i> Renovar
                 </a>
                 @endif
-                <a href="{{ route('rentals.return', $aluguel->id_aluguel) }}" class="action-button return-button" onclick="return confirm('Tem certeza que deseja registrar a devolução deste livro?')">
+                <a href="{{ route('rentals.return', $aluguel->id_aluguel) }}" class="action-button return-button">
                     <i class="fas fa-undo"></i> Devolver
                 </a>
             @endif
@@ -258,3 +258,51 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@endpush
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.return-button').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const href = btn.getAttribute('href');
+            Swal.fire({
+                title: 'Confirmar Devolução',
+                text: 'Tem certeza que deseja registrar a devolução deste livro?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Confirmar',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = href;
+                }
+            });
+        });
+    });
+
+    document.querySelectorAll('.renew-button').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const href = btn.getAttribute('href');
+            Swal.fire({
+                title: 'Confirmar Renovação',
+                text: 'Tem certeza que deseja renovar este empréstimo?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Confirmar',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = href;
+                }
+            });
+        });
+    });
+});
+</script>
+@endpush

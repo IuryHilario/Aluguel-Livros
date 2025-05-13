@@ -32,8 +32,8 @@ O sistema é administrado exclusivamente por um Administrador que gerencia todos
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/aluga-livros.git
-   cd aluga-livros
+   git clone https://github.com/IuryHilario/Aluguel-Livros.git
+   cd Aluguel-Livros
    ```
 
 2. Instale as dependências do PHP:
