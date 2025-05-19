@@ -11,7 +11,10 @@ use Carbon\Carbon;
     <title>@yield('title', 'Aluga Livros')</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="{{ asset('icone-book.ico') }}?v=2" type="image/x-icon">
-    @vite(['resources/css/dashboard/dashboard.css', 'resources/css/global/search.css'])
+    @vite(['resources/css/dashboard/dashboard.css'])
+
+    @vite(['resources/css/global/search.css', 'resources/css/components/form.css'])
+
     @stack('styles')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css">
 </head>
@@ -95,7 +98,7 @@ use Carbon\Carbon;
                 <div class="page-header">
                     <h2>@yield('page-title', 'Dashboard')</h2>
                     <nav class="breadcrumb">
-                        <a href="{{ route('dashboard') }}">Home</a> / 
+                        <a href="{{ route('dashboard') }}">Home</a> /
                         @yield('breadcrumb')
                     </nav>
                 </div>
@@ -109,11 +112,11 @@ use Carbon\Carbon;
         document.addEventListener('DOMContentLoaded', function() {
             const sidebarToggle = document.getElementById('sidebar-toggle');
             const dashboardContainer = document.querySelector('.dashboard-container');
-            
+
             sidebarToggle.addEventListener('click', function() {
                 dashboardContainer.classList.toggle('sidebar-collapsed');
             });
-            
+
             const menuItems = document.querySelectorAll('.sidebar-menu li');
             menuItems.forEach(item => {
                 if (item.querySelector('.submenu')) {
@@ -128,18 +131,18 @@ use Carbon\Carbon;
 
             const notificationDropdown = document.querySelector('.notification-dropdown');
             const notificationIcon = notificationDropdown.querySelector('.fa-bell');
-            
+
             notificationIcon.addEventListener('click', function(e) {
                 e.stopPropagation();
                 notificationDropdown.classList.toggle('show');
             });
-            
+
             document.querySelectorAll('.notification-item').forEach(item => {
                 item.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
             });
-            
+
             document.addEventListener('click', function(e) {
                 if (!notificationDropdown.contains(e.target)) {
                     notificationDropdown.classList.remove('show');

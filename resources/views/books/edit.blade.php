@@ -4,10 +4,8 @@
 
 @section('page-title', 'Editar Livro')
 
-@vite(['resources/css/books/books.css'])
-
 @section('breadcrumb')
-<a href="{{ route('books.index') }}">Livros</a> / <span>Editar</span>
+    <a href="{{ route('books.index') }}">Livros</a> / <span>Editar</span>
 @endsection
 
 @section('content')
@@ -19,53 +17,59 @@
         <form action="{{ route('books.update', $livro->id_livro) }}" method="POST" enctype="multipart/form-data" class="book-form">
             @csrf
             @method('PUT')
-            
-            <div class="form-group">
-                <label for="titulo">Título do Livro *</label>
-                <input type="text" name="titulo" id="titulo" class="form-control @error('titulo') is-invalid @enderror" autocomplete="off"
-                    value="{{ old('titulo', $livro->titulo) }}" required>
-                @error('titulo')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-            
-            <div class="form-group">
-                <label for="autor">Autor *</label>
-                <input type="text" name="autor" id="autor" class="form-control @error('autor') is-invalid @enderror" autocomplete="off"
-                    value="{{ old('autor', $livro->autor) }}" required>
-                @error('autor')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-            
-            <div class="form-group">
-                <label for="editor">Editora</label>
-                <input type="text" name="editor" id="editor" class="form-control @error('editor') is-invalid @enderror" autocomplete="off"
-                    value="{{ old('editor', $livro->editor) }}">
-                @error('editor')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-            
-            <div class="form-group">
-                <label for="ano_publicacao">Ano de Publicação *</label>
-                <input type="number" name="ano_publicacao" id="ano_publicacao" min="1000" max="{{ date('Y') }}"
-                    class="form-control @error('ano_publicacao') is-invalid @enderror" 
-                    value="{{ old('ano_publicacao', $livro->ano_publicacao) }}" required>
-                @error('ano_publicacao')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-            
-            <div class="form-group">
-                <label for="quantidade">Quantidade de Exemplares *</label>
-                <input type="number" name="quantidade" id="quantidade" min="0"
-                    class="form-control @error('quantidade') is-invalid @enderror" 
-                    value="{{ old('quantidade', $livro->quantidade) }}" required>
-                @error('quantidade')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
+
+            <x-form.input
+                label="Título do Livro"
+                placeholder="Digite o título do livro"
+                type="text"
+                name="titulo"
+                id="titulo"
+                value="{{ old('titulo', $livro->titulo) }}"
+                required
+            />
+
+            <x-form.input
+                label="Autor"
+                placeholder="Digite o nome do autor"
+                type="text"
+                name="autor"
+                id="autor"
+                value="{{ old('autor', $livro->autor) }}"
+                required
+            />
+
+            <x-form.input
+                label="Editor"
+                placeholder="Digite o nome da editora"
+                type="text"
+                name="editor"
+                id="editor"
+                value="{{ old('editor', $livro->editor) }}"
+                required
+            />
+
+            <x-form.input
+                label="Ano Publicação"
+                placeholder="Digite o ano de publicação"
+                type="number"
+                name="ano_publicacao"
+                id="ano_publicacao"
+                value="{{ old('ano_publicacao', $livro->ano_publicacao) }}"
+                min="1000"
+                max="{{ date('Y') }}"
+                required
+            />
+
+            <x-form.input
+                label="Quantidade de Exemplares"
+                placeholder="Digite a quantidade de exemplares"
+                type="number"
+                name="quantidade"
+                id="quantidade"
+                value="{{ old('quantidade', $livro->quantidade) }}"
+                min="0"
+                required
+            />
             
             <div class="form-group">
                 <label for="capa">Capa do Livro</label>

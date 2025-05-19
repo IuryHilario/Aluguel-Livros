@@ -31,7 +31,7 @@
         <form method="POST" action="{{ route('profile.update') }}" class="profile-form">
             @csrf
             @method('PATCH')
-            
+
             <div class="tab-content active" id="personal-info-content">
                 <div class="panel">
                     <div class="panel-header">
@@ -39,21 +39,23 @@
                         <p>Atualize suas informações básicas</p>
                     </div>
                     <div class="panel-body">
-                        <div class="form-group">
-                            <label for="name">Nome Completo</label>
-                            <input type="text" id="name" name="name" value="{{ old('name', Auth::user()->name) }}" required autofocus autocomplete="off"/>
-                            @error('name')
-                                <span class="error-message">{{ $message }}</span>
-                            @enderror
-                        </div>
 
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" value="{{ old('email', Auth::user()->email) }}" required autocomplete="off" />
-                            @error('email')
-                                <span class="error-message">{{ $message }}</span>
-                            @enderror
-                        </div>
+                        <x-form.input
+                            label="Nome Completo"
+                            name="name"
+                            type="text"
+                            value="{{ old('name', Auth::user()->name) }}"
+                            required
+                        />
+
+                        <x-form.input
+                            label="E-mail"
+                            name="email"
+                            type="email"
+                            value="{{ old('email', Auth::user()->email) }}"
+                            required
+                        />
+
                     </div>
                 </div>
             </div>

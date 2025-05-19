@@ -115,23 +115,7 @@
     color: var(--gray-700);
 }
 
-.filter-column input,
-.filter-column select,
-.filter-column .custom-select {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid var(--accent-color);
-    border-radius: 8px;
-    background-color: #fff;
-    transition: all 0.2s ease;
-}
-
-.filter-column input:focus,
-.filter-column select:focus {
-    outline: none;
-    border-color: var(--primary-light);
-    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
-}
+/* Nota: Estilos de input movidos para components/form.css */
 
 .filter-actions {
     display: flex;
@@ -164,47 +148,7 @@
     font-weight: 600;
 }
 
-/* Formulário de usuário */
-.form-usuario {
-    max-width: 800px;
-}
-
-.form-usuario .form-group {
-    margin-bottom: 20px;
-}
-
-.form-usuario label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: var(--primary-dark);
-}
-
-.form-usuario input,
-.form-usuario select,
-.form-usuario textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--accent-color);
-    border-radius: 8px;
-    background-color: #fcfaf7;
-    font-size: 15px;
-    transition: all 0.3s ease;
-}
-
-.form-usuario input:focus,
-.form-usuario select:focus,
-.form-usuario textarea:focus {
-    outline: none;
-    border-color: var(--primary-light);
-    box-shadow: 0 0 0 3px rgba(161, 124, 91, 0.1);
-}
-
-.form-usuario .form-actions {
-    margin-top: 30px;
-    display: flex;
-    gap: 10px;
-}
+/* Nota: Estilos de formulário movidos para components/form.css */
 
 /* Badge para status */
 .user-badge {
@@ -273,27 +217,13 @@
     gap: 10px;
 }
 
-.search-form input {
-    padding: 8px 12px;
-    border: 1px solid var(--accent-color);
-    border-radius: 6px;
-    background-color: #fff;
-}
+/* Nota: Estilos de input movidos para components/form.css */
 
 /* Filtro e busca aprimorados */
 .search-input-wrapper {
     position: relative;
     display: flex;
     align-items: center;
-}
-
-.search-input-wrapper input {
-    padding: 10px 40px 10px 15px;
-    border: 1px solid var(--accent-color);
-    border-radius: 6px;
-    background-color: #fff;
-    width: 300px;
-    font-size: 14px;
 }
 
 .search-input-wrapper .btn-icon {
@@ -741,21 +671,21 @@
         align-items: flex-start;
         gap: 10px;
     }
-    
+
     .user-details .user-header {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .user-details .user-avatar {
         margin-right: 0;
         margin-bottom: 15px;
     }
-    
+
     .user-details .info-item {
         flex-direction: column;
     }
-    
+
     .user-details .info-label {
         width: 100%;
         margin-bottom: 5px;
@@ -765,22 +695,22 @@
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .search-input-wrapper {
         width: 100%;
     }
-    
+
     .search-input-wrapper input {
         width: 100%;
     }
-    
+
     .order-options {
         margin-left: 0;
         margin-top: 10px;
         width: 100%;
         justify-content: space-between;
     }
-    
+
     .order-options select {
         flex: 1;
     }
@@ -788,16 +718,16 @@
     .user-stats {
         flex-direction: column;
     }
-    
+
     .info-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .info-item {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .info-label {
         margin-bottom: 8px;
     }

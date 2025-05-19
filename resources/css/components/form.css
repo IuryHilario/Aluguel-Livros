@@ -1,0 +1,144 @@
+/* Estilos para componentes de formulário */
+
+/* Container principal do formulário */
+.form-usuario {
+    max-width: 800px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Input Wrapper e Search Container */
+.input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-container .form-usuario-input {
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.search-btn {
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: calc(100% - 4px);
+    background: var(--primary-color, #4361ee);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.search-btn:hover {
+    background-color: #3152d9;
+}
+
+/* Estilo para labels */
+.form-usuario-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+    font-size: 15px;
+}
+
+/* Estilo para inputs */
+.form-usuario-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: #fff;
+    appearance: none;
+    transition: all 0.3s ease;
+}
+
+.form-usuario-input:focus {
+    border-color: #4361ee;
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    outline: none;
+}
+
+/* Estilo para mensagens de erro */
+.input-error {
+    border-color: #ef4444;
+}
+
+.input-error:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.input-error-message {
+    color: #ef4444;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Texto auxiliar para campos */
+.form-text {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 5px;
+    display: block;
+}
+
+.text-muted {
+    color: var(--text-light);
+}
+
+/* Estilos para inputs de filtro */
+.filter-column input,
+.filter-column select,
+.filter-column .custom-select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    background-color: #fff;
+    transition: all 0.2s ease;
+}
+
+.filter-column input:focus,
+.filter-column select:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+/* Estilos para inputs de busca */
+.search-form input {
+    padding: 8px 12px;
+    border: 1px solid var(--accent-color);
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+.search-input-wrapper input {
+    padding: 10px 40px 10px 15px;
+    border: 1px solid var(--accent-color);
+    border-radius: 6px;
+    background-color: #fff;
+    width: 300px;
+    font-size: 14px;
+}
+
+/* Estilos para ações de formulário */
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+}

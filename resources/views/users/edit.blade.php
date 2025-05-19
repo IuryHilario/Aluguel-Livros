@@ -33,28 +33,46 @@
         <form action="{{ route('users.update', $usuario->id_usuario) }}" method="POST" class="form-usuario">
             @csrf
             @method('PUT')
-            
-            <div class="form-group">
-                <label for="nome">Nome completo <span class="required">*</span></label>
-                <input type="text" id="nome" name="nome" value="{{ old('nome', $usuario->nome) }}" class="form-control" autocomplete="off" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">E-mail <span class="required">*</span></label>
-                <input type="email" id="email" name="email" value="{{ old('email', $usuario->email) }}" class="form-control" autocomplete="off" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="telefone">Telefone</label>
-                <input type="tel" id="telefone" name="telefone" value="{{ old('telefone', $usuario->telefone) }}" class="form-control" autocomplete="off" placeholder="(00) 00000-0000">
-            </div>
-            
-            <div class="form-group">
-                <label for="max_emprestimos">Máximo de Livros Permitidos</label>
-                <input type="number" id="max_emprestimos" name="max_emprestimos" value="{{ old('max_emprestimos', $usuario->max_emprestimos) }}" class="form-control" min="1" max="{{ $settings['max_loans_per_user'] ?? 3 }}">
-                <small class="form-text text-muted">Máximo definido nas configurações: {{ $settings['max_loans_per_user'] ?? 3 }} livros</small>
-            </div>
-            
+
+            <x-form.input
+                label="Nome Completo"
+                type="text"
+                name="nome"
+                id="nome"
+                value="{{ $usuario->nome }}"
+                required
+            />
+
+            <x-form.input
+                label="E-mail"
+                type="email"
+                name="email"
+                id="email"
+                value="{{ $usuario->email }}"
+                required
+            />
+
+            <x-form.input
+                label="Telefone"
+                type="tel"
+                name="telefone"
+                id="telefone"
+                value="{{ $usuario->telefone }}"
+                placeholder="(00) 00000-0000"
+            />
+
+            <x-form.input
+                label="Máximo de Livros Permitidos"
+                placeholder="Digite o máximo de livros permitidos"
+                type="number"
+                name="max_emprestimos"
+                id="max_emprestimos"
+                value="{{ old('max_emprestimos', $settings['max_loans_per_user'] ?? 3) }}"
+                min="1"
+                max="{{ $settings['max_loans_per_user'] ?? 3 }}"
+                required
+            />
+
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-save"></i> Atualizar
@@ -68,9 +86,7 @@
 </div>
 @endsection
 
-@push('styles')
-    @vite(['resources/css/usuario/usuario.css'])
-@endpush
+
 
 @push('scripts')
 <script>
@@ -81,7 +97,7 @@
             telefoneInput.addEventListener('input', function(e) {
                 let value = e.target.value.replace(/\D/g, '');
                 if (value.length > 11) value = value.slice(0, 11);
-                
+
                 if (value.length > 2) {
                     value = '(' + value.substring(0, 2) + ') ' + value.substring(2);
                 }
