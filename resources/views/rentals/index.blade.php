@@ -21,7 +21,7 @@
             </a>
         </div>
     </div>
-    
+
     <div class="filter-container" style="display: none;">
         <form action="{{ route('rentals.index') }}" method="GET" class="filter-form">
             <div class="filter-row">
@@ -56,20 +56,20 @@
             </div>
         </form>
     </div>
-    
+
     <div class="panel-body">
         @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
-        
+
         @if(session('error'))
             <div class="alert alert-danger">
                 {{ session('error') }}
             </div>
         @endif
-        
+
         @if(count($alugueis) > 0)
             <div class="table-responsive">
                 <table class="rentals-table">
@@ -110,21 +110,11 @@
                                 </td>
                                 <td>
                                     <div class="action-buttons">
-                                        <a href="{{ route('rentals.show', $aluguel->id_aluguel) }}" 
-                                           class="btn btn-sm btn-view">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                        <a href="{{ route('rentals.return', $aluguel->id_aluguel) }}" 
-                                           class="btn btn-sm btn-return">
-                                            <i class="fas fa-undo"></i>
-                                        </a>
-                                        @if($aluguel->ds_status == 'Atrasado')
-                                        <a href="#" 
-                                           class="btn btn-sm btn-email"
-                                           data-rental-id="{{ $aluguel->id_aluguel }}">
-                                            <i class="fas fa-envelope"></i>  
-                                        </a>
-                                        @endif
+                                        <x-form.actions
+                                            :show="route('rentals.show', $aluguel->id_aluguel)"
+                                            :devolver="route('rentals.return', $aluguel->id_aluguel)"
+                                            :email="$aluguel->ds_status == 'Atrasado' ? route('rentals.notification', $aluguel->id_aluguel) : null"
+                                        />
                                     </div>
                                 </td>
                             </tr>
@@ -132,7 +122,7 @@
                     </tbody>
                 </table>
             </div>
-            
+
             @if(method_exists($alugueis, 'links'))
                 <div class="pagination-container">
                     {{ $alugueis->appends(request()->query())->links('components.pagination') }}
@@ -186,28 +176,28 @@
     document.addEventListener('DOMContentLoaded', function() {
         const toggleFilter = document.getElementById('toggleFilter');
         const filterContainer = document.querySelector('.filter-container');
-        
+
         // Verificar se há filtros aplicados
         const urlParams = new URLSearchParams(window.location.search);
-        const hasFilters = urlParams.has('user') || urlParams.has('book') || 
-                          urlParams.has('status') || urlParams.has('start_date') || 
+        const hasFilters = urlParams.has('user') || urlParams.has('book') ||
+                          urlParams.has('status') || urlParams.has('start_date') ||
                           urlParams.has('end_date');
-        
+
         if (hasFilters) {
             filterContainer.style.display = 'block';
         }
-        
+
         toggleFilter.addEventListener('click', function() {
             filterContainer.style.display = filterContainer.style.display === 'none' ? 'block' : 'none';
         });
-        
+
         // Modal de confirmação de e-mail de atraso
         let selectedRentalId = null;
         const emailModal = document.getElementById('emailModal');
         const closeEmailModal = document.getElementById('closeEmailModal');
         const cancelEmailSend = document.getElementById('cancelEmailSend');
         const confirmEmailSend = document.getElementById('confirmEmailSend');
-        document.querySelectorAll('.btn-email').forEach(function(btn) {
+        document.querySelectorAll('.action-btn.email').forEach(function(btn) {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
                 selectedRentalId = btn.getAttribute('data-rental-id');
@@ -231,7 +221,7 @@
                 window.location.href = "{{ url('rentals/notification') }}/" + selectedRentalId;
             }
         });
-        
+
         document.querySelectorAll('.btn-return').forEach(function(btn) {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();

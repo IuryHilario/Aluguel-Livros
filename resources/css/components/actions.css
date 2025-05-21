@@ -1,0 +1,61 @@
+/* Estilos para botões de ação */
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    margin: 2px 0px;
+    font-size: 0.9rem;
+}
+
+.action-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+    background-color: rgba(161, 124, 91, 0.1);
+}
+
+/* Cores para diferentes tipos de ações */
+.action-btn.view {
+    background-color: #f39c12; /* Laranja para visualização */
+}
+
+.action-btn.edit {
+    background-color: #3498db; /* Azul para edição */
+}
+
+.action-btn.delete {
+    background-color: #e74c3c; /* Vermelho para exclusão */
+}
+
+.action-btn.return {
+    background-color: #42B983; /* Verde para devolução */
+}
+
+.action-btn.notify {
+    background-color: #F08C00; /* Laranja escuro para notificação */
+}
+
+.action-btn.details {
+    background-color: #4267B2; /* Azul Facebook para detalhes */
+}
+.action-btn.email {
+    background-color: #FF5733; /* Vermelho para email */
+}
+
+/* Estilo para o container de ações */
+.flex.space-x-2 {
+    display: flex;
+    gap: 8px; /* Equivalente ao space-x-2 no Tailwind */
+}
+
+.inline {
+    display: inline;
+}

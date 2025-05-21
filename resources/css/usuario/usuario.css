@@ -171,37 +171,7 @@
 }
 
 
-.action-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 6px;
-    background: none;
-    border: none;
-    color: #FFFFFF;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    margin: 2px 0px;
-}
 
-.action-btn:hover {
-    background-color: rgba(161, 124, 91, 0.1);
-    color: var(--primary-color);
-}
-
-.action-btn.edit {
-    background-color: #3498db;
-}
-
-.action-btn.view {
-    background-color: #f39c12;
-}
-
-.action-btn.delete {
-    background-color: #e74c3c;
-}
 
 /* Filter and search section */
 .filter-section {

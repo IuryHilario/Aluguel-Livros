@@ -640,11 +640,11 @@
 }
 
 @keyframes slideDown {
-    from { 
+    from {
         opacity: 0;
         transform: translateY(-30px);
     }
-    to { 
+    to {
         opacity: 1;
         transform: translateY(0);
     }
@@ -671,35 +671,35 @@
         max-width: 100%;
         margin-bottom: 20px;
     }
-    
+
     .rental-form {
         padding: 15px;
     }
-    
+
     .search-input-container {
         flex-direction: column;
         gap: 5px;
     }
-    
+
     .preview-line {
         flex-direction: column;
     }
-    
+
     .preview-label {
         margin-bottom: 5px;
     }
-    
+
     .panel-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
     }
-    
+
     .panel-actions {
         width: 100%;
         justify-content: flex-end;
     }
-    
+
     .btn {
         padding: 8px 16px;
     }
@@ -910,7 +910,7 @@
     .rental-row {
         flex-direction: column;
     }
-    
+
     .rental-column {
         min-width: 100%;
     }
@@ -1076,15 +1076,15 @@
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .renewal-badge {
         margin-bottom: 10px;
     }
-    
+
     .status-card {
         flex-direction: column;
     }
-    
+
     .status-card i {
         margin-bottom: 10px;
         font-size: 24px;
@@ -1625,71 +1625,39 @@
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .header-info {
         margin-bottom: 15px;
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
     }
-    
+
     .header-actions {
         width: 100%;
         justify-content: flex-start;
         flex-wrap: wrap;
     }
-    
+
     .book-card .card-body,
     .user-card .card-body {
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
-    
+
     .book-cover,
     .user-avatar {
         margin-bottom: 15px;
     }
-    
+
     .meta-item {
         justify-content: center;
     }
-    
+
     .detail-cards {
         grid-template-columns: 1fr;
     }
-}
-
-.btn-view {
-    border: 2px solid #f59e0b;
-    background: #f59e0b;
-    color: #fff;
-}
-
-.btn-view:hover {
-    background: #d97706;
-    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
-}
-
-.btn-return {
-    border: 2px solid #10b981;
-    background: #10b981;
-    color: #fff;
-}
-
-.btn-return:hover {
-    background: #059669;
-    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
-}
-
-.btn-email {
-    border: 2px solid #ef4444;
-    background: #ef4444;
-    color: #fff;
-}
-.btn-email:hover {
-    background: #dc2626;
-    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
 }
 
 .search-results-dropdown {

@@ -1,6 +1,6 @@
 <div class="flex space-x-2">
     @if(!empty($show))
-        <a href="{{ route('users.show', $id) }}" class="action-btn view" title="Visualizar">
+        <a href="{{ $show }}" class="action-btn view" title="Visualizar">
             <i class="fas fa-eye"></i>
         </a>
     @endif
@@ -25,6 +25,12 @@
     @if(!empty($devolver))
         <a href="{{ $devolver }}" class="action-btn return" title="Devolver">
             <i class="fas fa-undo"></i>
+        </a>
+    @endif
+
+    @if(!empty($email))
+        <a href="{{ $email }}" class="action-btn email" title="Enviar Email" data-rental-id="{{ substr(strrchr($email, '/'), 1) }}">
+            <i class="fas fa-envelope"></i>
         </a>
     @endif
 </div>

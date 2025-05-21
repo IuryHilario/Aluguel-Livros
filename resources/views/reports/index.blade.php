@@ -22,7 +22,7 @@
                 <span>Livros</span>
             </div>
         </div>
-        
+
         <div class="card purple">
             <div class="card-icon">
                 <i class="fas fa-copy"></i>
@@ -32,7 +32,7 @@
                 <span>Exemplares</span>
             </div>
         </div>
-        
+
         <div class="card green">
             <div class="card-icon">
                 <i class="fas fa-users"></i>
@@ -42,7 +42,7 @@
                 <span>Usuários</span>
             </div>
         </div>
-        
+
         <div class="card orange">
             <div class="card-icon">
                 <i class="fas fa-handshake"></i>
@@ -52,7 +52,7 @@
                 <span>Aluguéis Ativos</span>
             </div>
         </div>
-        
+
         <div class="card red">
             <div class="card-icon">
                 <i class="fas fa-exclamation-triangle"></i>
@@ -185,7 +185,7 @@
             </button>
         </div>
     </div>
-    
+
     <div class="overdue-filter-container" style="display: none;">
         <form id="overdueFilterForm" class="filter-form">
             <div class="filter-row">
@@ -211,7 +211,7 @@
             </div>
         </form>
     </div>
-    
+
     <div class="panel-body" id="overdueRentalsContent">
         @if(count($overdueRentals) > 0)
             <div class="overdue-rentals">
@@ -235,9 +235,9 @@
                                 <td>{{ \Carbon\Carbon::parse($rental->dt_devolucao)->format('d/m/Y') }}</td>
                                 <td>{{ $rental->diasAtraso() }} dias</td>
                                 <td class="actions">
-                                    <a href="{{ route('rentals.show', $rental->id_aluguel) }}" class="action-btn details" title="Ver Detalhes">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
+                                    <x-form.actions
+                                        show="{{ route('rentals.show', $rental->id_aluguel) }}"
+                                    />
                                 </td>
                             </tr>
                         @endforeach
@@ -267,7 +267,7 @@
                 alert(`Funcionalidade de notificação para o usuário ID: ${userId} será implementada em breve.`);
             });
         });
-        
+
         // Notify all button
         const notifyAllBtn = document.getElementById('notifyAllBtn');
         if (notifyAllBtn) {
@@ -276,11 +276,11 @@
                 alert('Funcionalidade de notificação para todos os usuários em atraso será implementada em breve.');
             });
         }
-        
+
         // Toggle overdue filter
         const toggleOverdueFilter = document.getElementById('toggleOverdueFilter');
         const overdueFilterContainer = document.querySelector('.overdue-filter-container');
-        
+
         // Toggle para mostrar/ocultar o filtro
         if (toggleOverdueFilter && overdueFilterContainer) {
             toggleOverdueFilter.addEventListener('click', function() {
@@ -291,47 +291,47 @@
                 }
             });
         }
-        
+
         // AJAX form submission
         const overdueFilterForm = document.getElementById('overdueFilterForm');
         const overdueRentalsContent = document.getElementById('overdueRentalsContent');
         const filterLoading = document.getElementById('filter-loading');
-        
+
         if (overdueFilterForm && overdueRentalsContent) {
             overdueFilterForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                
+
                 // Validação de datas
                 const startDate = document.getElementById('start_date').value;
                 const endDate = document.getElementById('end_date').value;
-                
+
                 if (startDate && endDate && new Date(startDate) > new Date(endDate)) {
                     alert('A data inicial não pode ser maior que a data final');
                     return false;
                 }
-                
+
                 // Mostrar indicador de carregamento
                 if (filterLoading) {
                     filterLoading.style.display = 'block';
                 }
-                
+
                 // Montar os parâmetros do filtro
                 const formData = new FormData(overdueFilterForm);
                 const params = new URLSearchParams();
-                
+
                 for (const [key, value] of formData.entries()) {
                     if (value) {
                         params.append(key, value);
                     }
                 }
-                
+
                 // Fazer a requisição AJAX
                 fetch(`{{ route('reports.overdue-filter') }}?${params.toString()}`)
                     .then(response => response.text())
                     .then(html => {
                         // Atualizar o conteúdo com os resultados filtrados
                         overdueRentalsContent.innerHTML = html;
-                        
+
                         // Registrar novamente os listeners para os botões de notificação
                         const newNotifyButtons = overdueRentalsContent.querySelectorAll('.notify');
                         newNotifyButtons.forEach(button => {
@@ -341,7 +341,7 @@
                                 alert(`Funcionalidade de notificação para o usuário ID: ${userId} será implementada em breve.`);
                             });
                         });
-                        
+
                         // Ocultar indicador de carregamento
                         if (filterLoading) {
                             filterLoading.style.display = 'none';
@@ -355,7 +355,7 @@
                         alert('Ocorreu um erro ao filtrar os aluguéis. Por favor, tente novamente.');
                     });
             });
-            
+
             // Limpar filtros
             const clearFilters = document.getElementById('clearFilters');
             if (clearFilters) {
@@ -364,7 +364,7 @@
                     document.getElementById('start_date').value = '';
                     document.getElementById('end_date').value = '';
                     document.getElementById('min_days').value = '';
-                    
+
                     // Submeter o form para mostrar todos os aluguéis em atraso
                     overdueFilterForm.dispatchEvent(new Event('submit'));
                 });

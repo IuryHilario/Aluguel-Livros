@@ -55,7 +55,7 @@
                 </div>
             </form>
         </div>
-            
+
         @if(request('search'))
             <div class="filter-active">
                 <p>
@@ -92,19 +92,11 @@
                             <td>{{ $usuario->telefone ?? 'Não informado' }}</td>
                             <td>{{ $usuario->created_at ? $usuario->created_at->format('d/m/Y') : 'N/A' }}</td>
                             <td class="actions">
-                                <a href="{{ route('users.show', $usuario->id_usuario) }}" class="action-btn view" title="Visualizar">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="{{ route('users.edit', $usuario->id_usuario) }}" class="action-btn edit" title="Editar">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <form action="{{ route('users.destroy', $usuario->id_usuario) }}" method="POST" class="d-inline" onsubmit="return confirm('Tem certeza que deseja remover este usuário?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="action-btn delete" title="Excluir">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
+                                <x-form.actions
+                                    show="{{ route('users.show', $usuario->id_usuario) }}"
+                                    edit="{{ route('users.edit', $usuario->id_usuario) }}"
+                                    delete="{{ route('users.destroy', $usuario->id_usuario) }}"
+                                />
                             </td>
                         </tr>
                     @empty
@@ -127,7 +119,6 @@
             </table>
         </div>
 
-        <!-- Paginação -->
         @if($usuarios->count() > 0)
             <div class="pagination-container">
                 {{ $usuarios->appends(request()->query())->links('components.pagination') }}
@@ -146,16 +137,16 @@
     document.addEventListener('DOMContentLoaded', function() {
         const toggleFilter = document.getElementById('toggleFilter');
         const filterContainer = document.querySelector('.filter-container');
-        
+
         // Verificar se há filtros aplicados
         const urlParams = new URLSearchParams(window.location.search);
         const hasFilters = urlParams.has('search') || urlParams.has('order_by') || urlParams.has('order_dir');
-        
+
         // Mostrar filtros automaticamente se houver algum aplicado
         if (hasFilters) {
             filterContainer.style.display = 'block';
         }
-        
+
         toggleFilter.addEventListener('click', function() {
             filterContainer.style.display = filterContainer.style.display === 'none' ? 'block' : 'none';
         });

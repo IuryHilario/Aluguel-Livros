@@ -46,7 +46,7 @@ a {
     .filter-column {
         flex-basis: 100%;
     }
-    
+
     .filter-actions {
         flex-basis: 100%;
         justify-content: flex-end;
@@ -275,7 +275,7 @@ a {
     font-weight: 600;
 }
 
-.history-table th, 
+.history-table th,
 .history-table td {
     padding: 10px 15px;
     border-bottom: 1px solid #eaeaea;
@@ -383,48 +383,6 @@ a {
     border-color: #f5c6cb;
 }
 
-/* Botões específicos para livros */
-.btn-sm {
-    padding: 5px 10px;
-    font-size: 0.8rem;
-}
-
-.btn-info {
-    background-color: #17a2b8;
-    color: white;
-}
-
-.btn-info:hover {
-    background-color: #138496;
-}
-
-.btn-warning {
-    background-color: #ffc107;
-    color: #212529;
-}
-
-.btn-warning:hover {
-    background-color: #e0a800;
-}
-
-.btn-danger {
-    background-color: #dc3545;
-    color: white;
-}
-
-.btn-danger:hover {
-    background-color: #c82333;
-}
-
-.btn-secondary {
-    background-color: #6c757d;
-    color: white;
-}
-
-.btn-secondary:hover {
-    background-color: #5a6268;
-}
-
 .badge {
     display: inline-block;
     padding: 0.25em 0.4em;
@@ -491,7 +449,7 @@ a {
     .col-md-6 {
         width: 100%;
     }
-    
+
     .form-row {
         flex-direction: column;
     }
@@ -631,7 +589,7 @@ a {
     border-collapse: collapse;
 }
 
-.table th, 
+.table th,
 .table td {
     padding: 12px 15px;
     vertical-align: middle;

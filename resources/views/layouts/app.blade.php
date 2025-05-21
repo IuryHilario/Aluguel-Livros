@@ -13,7 +13,7 @@ use Carbon\Carbon;
     <link rel="icon" href="{{ asset('icone-book.ico') }}?v=2" type="image/x-icon">
     @vite(['resources/css/dashboard/dashboard.css'])
 
-    @vite(['resources/css/global/search.css', 'resources/css/components/form.css'])
+    @vite(['resources/css/global/search.css', 'resources/css/components/form.css', 'resources/css/components/actions.css'])
 
     @stack('styles')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css">

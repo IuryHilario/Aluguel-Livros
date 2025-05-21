@@ -7,7 +7,7 @@
 @vite(['resources/css/books/books.css'])
 
 @section('breadcrumb')
-<a href="{{ route('books.index') }}">Livros</a>
+    <a href="{{ route('books.index') }}">Livros</a>
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@
             </a>
         </div>
     </div>
-    
+
     <div class="filter-container" style="display: {{ request()->hasAny(['titulo', 'autor', 'editor', 'ano_publicacao']) ? 'block' : 'none' }};">
         <form action="{{ route('books.index') }}" method="GET" class="filter-form">
             <div class="filter-row">
@@ -48,7 +48,7 @@
             </div>
         </form>
     </div>
-    
+
     <div class="panel-body">
         @if(session('success'))
             <div class="alert alert-success">
@@ -62,7 +62,7 @@
                 <div class="book-card">
                     <div class="book-cover">
                         @if($livro->capa && $settings['show_book_covers'])
-                                <img src="{{ route('books.capa', $livro->id_livro) }}" alt="Capa do livro {{ $livro->titulo }}">
+                            <img src="{{ route('books.capa', $livro->id_livro) }}" alt="Capa do livro {{ $livro->titulo }}">
                         @else
                             <div class="no-cover">
                                 <i class="fas fa-book"></i>
@@ -85,24 +85,16 @@
                         </div>
                     </div>
                     <div class="book-actions">
-                        <a href="{{ route('books.show', $livro->id_livro) }}" class="btn btn-sm btn-info" title="Ver detalhes">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                        <a href="{{ route('books.edit', $livro->id_livro) }}" class="btn btn-sm btn-warning" title="Editar">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <form action="{{ route('books.destroy', $livro->id_livro) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger btn-delete-book" title="Excluir">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </form>
+                        <x-form.actions
+                            show="{{ route('books.show', $livro->id_livro) }}"
+                            edit="{{ route('books.edit', $livro->id_livro) }}"
+                            delete="{{ route('books.destroy', $livro->id_livro) }}"
+                        />
                     </div>
                 </div>
                 @endforeach
             </div>
-            
+
             @if(method_exists($livros, 'links'))
                 <div class="pagination-container">
                     {{ $livros->appends(request()->query())->links('components.pagination') }}
@@ -111,7 +103,7 @@
         @else
             <div class="empty-state">
                 <div class="empty-icon">
-                    <i class="fas fa-books"></i>
+                    <i class="fas fa-book"></i>
                 </div>
                 <h4>Nenhum livro encontrado</h4>
                 <p>Não foram encontrados livros com os critérios especificados.</p>
@@ -132,31 +124,47 @@
     document.addEventListener('DOMContentLoaded', function() {
         const toggleFilter = document.getElementById('toggleFilter');
         const filterContainer = document.querySelector('.filter-container');
-        
+
         toggleFilter.addEventListener('click', function() {
             filterContainer.style.display = filterContainer.style.display === 'none' ? 'block' : 'none';
-    });
-    
+        });
 
-    document.querySelectorAll('.btn-delete-book').forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const form = btn.closest('form');
-            Swal.fire({
-                title: 'Excluir Livro',
-                text: 'Tem certeza que deseja excluir este livro?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Sim, excluir',
-                cancelButtonText: 'Cancelar',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    form.submit();
-                }
+        document.querySelectorAll('.action-btn.delete').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const form = btn.closest('form');
+                Swal.fire({
+                    title: 'Excluir Livro',
+                    text: 'Tem certeza que deseja excluir este livro?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Sim, excluir',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
             });
         });
     });
-});
 </script>
 @endpush
 @endsection
+
+@styles
+<style>
+    .action-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 70px !important;
+    }
+
+    .book-actions {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+</style>
+@endstyles
