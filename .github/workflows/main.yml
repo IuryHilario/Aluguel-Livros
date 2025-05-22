@@ -24,7 +24,7 @@ jobs:
         run: |
           git clone https://x-access-token:${PAT_TOKEN}@github.com/${REPO}.git repo
           cd repo
-          
+
           git checkout master
           git pull origin master
 
