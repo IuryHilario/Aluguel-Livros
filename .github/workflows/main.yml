@@ -1,34 +1,44 @@
-name: Criar branch ao abrir issue
+name: Create branch on new issue
 
 on:
   issues:
     types: [opened]
 
-permissions:
-  contents: write
-
 jobs:
-  create_branch:
+  create-branch:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
-      - name: Configurar Git
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update issue title
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
         run: |
+          NEW_TITLE="BIB-${ISSUE_NUMBER} - ${ISSUE_TITLE}"
+          gh issue edit "$ISSUE_NUMBER" --title "$NEW_TITLE"
+
+      - name: Create branch from issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          BRANCH_NAME="BIB-${ISSUE_NUMBER}"
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin
+          git checkout -b "$BRANCH_NAME" origin/main
+          git push origin "$BRANCH_NAME"
 
-      - name: Clonar repositório e criar branch
+      - name: Comentar na issue com o nome da branch
         env:
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-          REPO: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
-          git clone https://x-access-token:${PAT_TOKEN}@github.com/${REPO}.git repo
-          cd repo
-
-          git checkout master
-          git pull origin master
-
-          BRANCH_NAME="BIB-${{ github.event.issue.number }}"
-          git checkout -b $BRANCH_NAME
-
-          git push origin $BRANCH_NAME
+          BRANCH_NAME="BIB-${ISSUE_NUMBER}"
+          COMMENT=":rocket: Branch criada para esta issue: \`${BRANCH_NAME}\`"
+          gh issue comment "$ISSUE_NUMBER" --body "$COMMENT"
