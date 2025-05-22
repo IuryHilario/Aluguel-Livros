@@ -1,0 +1,29 @@
+name: Criar branch ao abrir issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  create_branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configurar git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Clonar repositório
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          git clone https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git repo
+          cd repo
+          git checkout master
+          git pull origin master
+
+          BRANCH_NAME="BIB-${{ github.event.issue.number }}"
+          git checkout -b $BRANCH_NAME
+
+          git push origin $BRANCH_NAME
