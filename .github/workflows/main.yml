@@ -1,8 +1,5 @@
 name: Criar branch ao abrir issue
 
-permissions:
-  contents: write
-
 on:
   issues:
     types: [opened]
@@ -10,19 +7,21 @@ on:
 jobs:
   create_branch:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Configurar git
+      - name: Configurar Git
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Clonar repositório
+      - name: Clonar repositório e criar branch
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
           REPO: ${{ github.repository }}
         run: |
           git clone https://x-access-token:${PAT_TOKEN}@github.com/${REPO}.git repo
           cd repo
+          
           git checkout master
           git pull origin master
 
@@ -30,4 +29,3 @@ jobs:
           git checkout -b $BRANCH_NAME
 
           git push origin $BRANCH_NAME
-
