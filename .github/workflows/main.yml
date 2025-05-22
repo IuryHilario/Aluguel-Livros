@@ -7,16 +7,15 @@ on:
 jobs:
   create-branch:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      issues: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT }}
 
       - name: Update issue title
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAT }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
         run: |
@@ -25,7 +24,7 @@ jobs:
 
       - name: Create branch from issue
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAT }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           BRANCH_NAME="BIB-${ISSUE_NUMBER}"
@@ -36,15 +35,10 @@ jobs:
           git push origin "$BRANCH_NAME"
 
       - name: Comentar na issue com o nome da branch
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const issue_number = context.issue.number;
-            const branch_name = `BIB-${issue_number}`;
-            const comment = `:rocket: Branch criada para esta issue: \`${branch_name}\``;
-            await github.rest.issues.createComment({
-              ...context.repo,
-              issue_number,
-              body: comment
-            });
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          BRANCH_NAME="BIB-${ISSUE_NUMBER}"
+          COMMENT=":rocket: Branch criada para esta issue: \`${BRANCH_NAME}\`"
+          gh issue comment "$ISSUE_NUMBER" --body "$COMMENT"
