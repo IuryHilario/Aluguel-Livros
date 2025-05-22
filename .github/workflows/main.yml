@@ -18,10 +18,10 @@ jobs:
 
       - name: Clonar repositório
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
           REPO: ${{ github.repository }}
         run: |
-          git clone https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git repo
+          git clone https://x-access-token:${PAT_TOKEN}@github.com/${REPO}.git repo
           cd repo
           git checkout master
           git pull origin master
@@ -30,3 +30,4 @@ jobs:
           git checkout -b $BRANCH_NAME
 
           git push origin $BRANCH_NAME
+
