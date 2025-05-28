@@ -26,13 +26,13 @@
         <div class="header-actions">
             @if($aluguel->ds_status != 'Devolvido')
                 @if($aluguel->podeRenovar())
-                <a href="{{ route('rentals.renew', $aluguel->id_aluguel) }}" class="action-button renew-button">
-                    <i class="fas fa-sync-alt"></i> Renovar
-                </a>
+                <x-form.actions 
+                    :renovar="route('rentals.renew', $aluguel->id_aluguel)"
+                />
                 @endif
-                <a href="{{ route('rentals.return', $aluguel->id_aluguel) }}" class="action-button return-button">
-                    <i class="fas fa-undo"></i> Devolver
-                </a>
+                <x-form.actions 
+                    :devolver="route('rentals.return', $aluguel->id_aluguel)"
+                />
             @endif
             <a href="{{ route('rentals.index') }}" class="action-button back-button">
                 <i class="fas fa-arrow-left"></i> Voltar
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    document.querySelectorAll('.renew-button').forEach(function(btn) {
+    document.querySelectorAll('.renew-button, .action-btn.renew').forEach(function(btn) {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             const href = btn.getAttribute('href');

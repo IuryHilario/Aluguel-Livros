@@ -49,6 +49,9 @@
 .action-btn.email {
     background-color: #FF5733; /* Vermelho para email */
 }
+.action-btn.renew {
+    background-color: #8E44AD; /* Roxo para rewind */
+}
 
 /* Estilo para o container de ações */
 .flex.space-x-2 {
