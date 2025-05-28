@@ -12,9 +12,10 @@ class Actions extends Component
     public $delete;
     public $devolver;
     public $email;
+    public $renovar;
 
 
-    public function __construct($id = null, $show = null, $edit = null, $delete = null, $devolver = null, $email = null)
+    public function __construct($id = null, $show = null, $edit = null, $delete = null, $devolver = null, $email = null, $renovar = null)
     {
         $this->id = $id;
         $this->show = $show;
@@ -22,6 +23,7 @@ class Actions extends Component
         $this->delete = $delete;
         $this->devolver = $devolver;
         $this->email = $email;
+        $this->renovar = $renovar;
     }
 
     public function render()

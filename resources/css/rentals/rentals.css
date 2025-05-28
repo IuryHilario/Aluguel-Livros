@@ -464,18 +464,6 @@
     gap: 8px;
 }
 
-.return-btn {
-    white-space: nowrap;
-    background-color: var(--success-color);
-    border: none;
-    color: white;
-}
-
-.return-btn:hover {
-    background-color: #0ca678;
-    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
-}
-
 /* Alert Boxes */
 .alert {
     padding: 16px;
@@ -1014,24 +1002,6 @@
     font-size: 14px;
 }
 
-.can-renew {
-    background-color: var(--success-light);
-    border-left: 4px solid var(--success-color);
-}
-
-.can-renew i {
-    color: var(--success-color);
-}
-
-.cannot-renew {
-    background-color: var(--danger-light);
-    border-left: 4px solid var(--danger-color);
-}
-
-.cannot-renew i {
-    color: var(--danger-color);
-}
-
 .renewal-history {
     margin-top: 20px;
     padding-top: 15px;
@@ -1169,26 +1139,6 @@
 
 .action-button i {
     margin-right: 6px;
-}
-
-.renew-button {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.renew-button:hover {
-    background-color: #3152d9;
-    box-shadow: 0 4px 8px rgba(67, 97, 238, 0.25);
-}
-
-.return-button {
-    background-color: var(--success-color);
-    color: white;
-}
-
-.return-button:hover {
-    background-color: #0ca678;
-    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.25);
 }
 
 .back-button {
