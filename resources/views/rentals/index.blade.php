@@ -171,6 +171,14 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endpush
 
+@push('styles')
+<style>
+.action-buttons {
+    justify-content: center;
+}
+</style>
+@endpush
+
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
