@@ -4,19 +4,25 @@ on:
   pull_request:
     types: [closed]
     branches:
-      - master
+      - master # Ou main, ou develop, etc.
 
 jobs:
   delete_merged_branch:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Permissão necessária para o checkout
+      pull-requests: write # Permissão necessária para o evento de pull_request
     steps:
-      - name: Verificar se a PR foi mesclada
+      - name: Checkout do repositório
+        uses: actions/checkout@v4 # Adicione este passo
+
+      - name: Verificar se a PR foi mesclada e deletar branch
         if: github.event.pull_request.merged == true
         run: |
           echo "PR foi mesclada. Verificando branch de destino..."
           if [[ "${{ github.event.pull_request.base.ref }}" == "master" ]]; then
             echo "Merge na branch master. Deletando branch head..."
-            # Deleta a branch head. O GITHUB_TOKEN tem permissão para isso.
+            # O comando git push funciona agora porque o repositório foi clonado
             git push origin --delete ${{ github.event.pull_request.head.ref }}
           else
             echo "Merge não foi na branch master. Não deletando a branch."
