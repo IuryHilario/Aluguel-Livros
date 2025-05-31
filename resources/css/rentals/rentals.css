@@ -386,7 +386,7 @@
     background-color: var(--gray-100);
     color: var(--gray-800);
     font-weight: 600;
-    text-align: left;
+    text-align: center;
     padding: 15px;
     border-bottom: 2px solid var(--gray-200);
     white-space: nowrap;
@@ -397,6 +397,7 @@
     border-bottom: 1px solid var(--gray-200);
     vertical-align: middle;
     transition: background-color 0.2s;
+    text-align: center;
 }
 
 .rentals-table tr:last-child td {
@@ -457,11 +458,6 @@
     font-size: 0.85em;
     color: #e74c3c;
     text-align: center;
-}
-
-.action-buttons {
-    display: flex;
-    gap: 8px;
 }
 
 /* Alert Boxes */
@@ -590,6 +586,7 @@
     display: flex;
     gap: 10px;
     align-items: flex-end;
+    justify-content: center;
 }
 
 /* Empty State */
@@ -598,6 +595,9 @@
     padding: 60px 20px;
     background-color: #fff;
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .empty-icon {
