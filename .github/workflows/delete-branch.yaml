@@ -1,0 +1,23 @@
+name: Excluir branch após merge no master
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+
+jobs:
+  delete_merged_branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar se a PR foi mesclada
+        if: github.event.pull_request.merged == true
+        run: |
+          echo "PR foi mesclada. Verificando branch de destino..."
+          if [[ "${{ github.event.pull_request.base.ref }}" == "master" ]]; then
+            echo "Merge na branch master. Deletando branch head..."
+            # Deleta a branch head. O GITHUB_TOKEN tem permissão para isso.
+            git push origin --delete ${{ github.event.pull_request.head.ref }}
+          else
+            echo "Merge não foi na branch master. Não deletando a branch."
+          fi
