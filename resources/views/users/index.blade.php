@@ -70,7 +70,6 @@
             <table class="users-table">
                 <thead>
                     <tr>
-                        <th>#ID</th>
                         <th>Nome</th>
                         <th>Email</th>
                         <th>Telefone</th>
@@ -81,7 +80,6 @@
                 <tbody>
                     @forelse($usuarios as $usuario)
                         <tr>
-                            <td>{{ $usuario->id_usuario }}</td>
                             <td>
                                 <div class="user-info-cell">
                                     <span class="user-avatar-small">{{ strtoupper(substr($usuario->nome, 0, 1)) }}</span>
