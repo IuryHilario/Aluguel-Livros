@@ -75,7 +75,6 @@
                 <table class="rentals-table">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Usuário</th>
                             <th>Livro</th>
                             <th>Data Saída</th>
@@ -87,7 +86,6 @@
                     <tbody>
                         @foreach($alugueis as $aluguel)
                             <tr class="{{ $aluguel->isAtrasado() ? 'rental-delayed' : '' }}">
-                                <td>{{ $aluguel->id_aluguel }}</td>
                                 <td>
                                     <a href="{{ route('users.show', $aluguel->id_usuario) }}" class="user-link">
                                         {{ $aluguel->usuario->nome }}
