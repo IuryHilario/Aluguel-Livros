@@ -1,29 +1,33 @@
-name: Excluir branch após merge no master
+name: Excluir branch BIB após merge no master
 
 on:
   pull_request:
     types: [closed]
     branches:
-      - master # Ou main, ou develop, etc.
+      - master
 
 jobs:
   delete_merged_branch:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Permissão necessária para o checkout
-      pull-requests: write # Permissão necessária para o evento de pull_request
+      contents: write
+      pull-requests: write
     steps:
       - name: Checkout do repositório
-        uses: actions/checkout@v4 # Adicione este passo
+        uses: actions/checkout@v4
 
-      - name: Verificar se a PR foi mesclada e deletar branch
+      - name: Verificar se a PR foi mesclada e deletar branch BIB
         if: github.event.pull_request.merged == true
         run: |
-          echo "PR foi mesclada. Verificando branch de destino..."
+          BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
+          echo "PR foi mesclada. Branch de origem: $BRANCH_NAME"
           if [[ "${{ github.event.pull_request.base.ref }}" == "master" ]]; then
-            echo "Merge na branch master. Deletando branch head..."
-            # O comando git push funciona agora porque o repositório foi clonado
-            git push origin --delete ${{ github.event.pull_request.head.ref }}
+            if [[ "$BRANCH_NAME" == BIB-* ]]; then
+              echo "Branch $BRANCH_NAME é do tipo BIB. Deletando..."
+              git push origin --delete "$BRANCH_NAME"
+            else
+              echo "Branch $BRANCH_NAME não é do tipo BIB. Não será deletada."
+            fi
           else
             echo "Merge não foi na branch master. Não deletando a branch."
           fi
