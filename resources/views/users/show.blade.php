@@ -29,7 +29,7 @@
                     <p class="user-email"><i class="fas fa-envelope"></i> {{ $usuario->email }}</p>
                 </div>
             </div>
-            
+
             <div class="user-stats">
                 <div class="stat-card">
                     <div class="stat-icon"><i class="fas fa-book"></i></div>
@@ -38,7 +38,7 @@
                         <span class="stat-label">Livros Ativos</span>
                     </div>
                 </div>
-                
+
                 <div class="stat-card">
                     <div class="stat-icon"><i class="fas fa-exchange-alt"></i></div>
                     <div class="stat-content">
@@ -46,7 +46,7 @@
                         <span class="stat-label">Total de Aluguéis</span>
                     </div>
                 </div>
-                
+
                 <div class="stat-card">
                     <div class="stat-icon"><i class="fas fa-clock"></i></div>
                     <div class="stat-content">
@@ -55,40 +55,35 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="info-section">
                 <h3><i class="fas fa-user-tag"></i> Informações Pessoais</h3>
                 <div class="info-grid">
                     <div class="info-item">
-                        <div class="info-label"><i class="fas fa-id-card"></i> ID:</div>
-                        <div class="info-value">{{ $usuario->id_usuario }}</div>
-                    </div>
-                    
-                    <div class="info-item">
                         <div class="info-label"><i class="fas fa-phone"></i> Telefone:</div>
                         <div class="info-value">{{ $usuario->telefone ?? 'Não informado' }}</div>
                     </div>
-                    
+
                     <div class="info-item">
                         <div class="info-label"><i class="fas fa-layer-group"></i> Máximo de Livros:</div>
                         <div class="info-value">{{ $usuario->max_emprestimos ?? ($settings['max_loans_per_user'] ?? 3) }}</div>
                     </div>
-                    
+
                     <div class="info-item">
                         <div class="info-label"><i class="fas fa-calendar-plus"></i> Data de Cadastro:</div>
                         <div class="info-value">{{ $usuario->created_at ? $usuario->created_at->format('d/m/Y H:i') : 'N/A' }}</div>
                     </div>
-                    
+
                     <div class="info-item">
                         <div class="info-label"><i class="fas fa-calendar-check"></i> Última Atualização:</div>
                         <div class="info-value">{{ $usuario->updated_at ? $usuario->updated_at->format('d/m/Y H:i') : 'N/A' }}</div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="user-rentals">
                 <h3><i class="fas fa-book-reader"></i> Histórico de Aluguéis</h3>
-                
+
                 @if(count($usuario->alugueis) > 0)
                     <div class="rentals-list">
                         @foreach($usuario->alugueis as $aluguel)
@@ -129,7 +124,7 @@
             <a href="{{ route('users.index') }}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Voltar
             </a>
-            
+
             <form action="{{ route('users.destroy', $usuario->id_usuario) }}" method="POST" class="d-inline" style="margin-left: 10px;" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?')">
                 @csrf
                 @method('DELETE')

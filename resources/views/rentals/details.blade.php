@@ -15,7 +15,7 @@
     <!-- Cabeçalho com ações -->
     <div class="details-header">
         <div class="header-info">
-            <h2>Aluguel #{{ $aluguel->id_aluguel }}</h2>
+            <h2>Aluguel N° {{ $aluguel->id_aluguel }}</h2>
             <div class="status-chip {{ $aluguel->ds_status == 'Ativo' ? 'active' : ($aluguel->ds_status == 'Devolvido' ? 'completed' : 'delayed') }}">
                 {{ $aluguel->ds_status }}
                 @if($aluguel->isAtrasado())
@@ -26,11 +26,11 @@
         <div class="header-actions">
             @if($aluguel->ds_status != 'Devolvido')
                 @if($aluguel->podeRenovar())
-                <x-form.actions 
+                <x-form.actions
                     :renovar="route('rentals.renew', $aluguel->id_aluguel)"
                 />
                 @endif
-                <x-form.actions 
+                <x-form.actions
                     :devolver="route('rentals.return', $aluguel->id_aluguel)"
                 />
             @endif
@@ -45,7 +45,7 @@
             <i class="fas fa-check-circle"></i> {{ session('success') }}
         </div>
     @endif
-    
+
     @if(session('error'))
         <div class="alert alert-danger">
             <i class="fas fa-exclamation-circle"></i> {{ session('error') }}
@@ -111,9 +111,6 @@
                                 <i class="fas fa-phone"></i> {{ $aluguel->usuario->telefone }}
                             </div>
                         @endif
-                        <div class="meta-item">
-                            <i class="fas fa-id-card"></i> ID: {{ $aluguel->usuario->id_usuario }}
-                        </div>
                     </div>
                     <a href="{{ route('users.show', $aluguel->id_usuario) }}" class="view-more">
                         Ver perfil do usuário <i class="fas fa-arrow-right"></i>
