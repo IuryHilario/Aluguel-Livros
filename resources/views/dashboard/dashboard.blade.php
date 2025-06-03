@@ -142,7 +142,6 @@
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Livro</th>
                                 <th>Usuário</th>
                                 <th>Data Aluguel</th>
@@ -153,7 +152,6 @@
                         <tbody>
                             @forelse($alugueis->sortByDesc('id_aluguel') ?? [] as $aluguel)
                                 <tr class="{{ $aluguel->isAtrasado() ? 'rental-delayed' : '' }}">
-                                    <td>#{{ $aluguel->id_aluguel }}</td>
                                     <td>{{ $aluguel->livro->titulo ?? 'Livro não encontrado' }}</td>
                                     <td>{{ $aluguel->usuario->nome ?? 'Usuário não encontrado' }}</td>
                                     <td>{{ \Carbon\Carbon::parse($aluguel->dt_aluguel)->format('d/m/Y') }}</td>
