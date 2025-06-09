@@ -18,7 +18,7 @@
             <button class="btn-icon" id="toggleFilter"><i class="fas fa-filter"></i></button>
         </div>
     </div>
-    
+
     <div class="filter-container" style="display: none;">
         <form action="{{ route('rentals.history') }}" method="GET" class="filter-form">
             <div class="filter-row">
@@ -45,14 +45,13 @@
             </div>
         </form>
     </div>
-    
+
     <div class="panel-body">
         @if(count($alugueis) > 0)
             <div class="table-responsive">
                 <table class="rentals-table">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Usuário</th>
                             <th>Livro</th>
                             <th>Data Aluguel</th>
@@ -63,7 +62,6 @@
                     <tbody>
                         @foreach($alugueis as $aluguel)
                             <tr>
-                                <td>{{ $aluguel->id_aluguel }}</td>
                                 <td>
                                     <a href="{{ route('users.show', $aluguel->id_usuario) }}" class="user-link">
                                         {{ $aluguel->usuario->nome }}
@@ -84,7 +82,7 @@
                     </tbody>
                 </table>
             </div>
-            
+
             <div class="pagination-container">
                 {{ $alugueis->links('components.pagination') }}
             </div>
@@ -105,17 +103,17 @@
     document.addEventListener('DOMContentLoaded', function() {
         const toggleFilter = document.getElementById('toggleFilter');
         const filterContainer = document.querySelector('.filter-container');
-        
+
         // Verificar se há filtros aplicados
         const urlParams = new URLSearchParams(window.location.search);
-        const hasFilters = urlParams.has('user') || urlParams.has('book') || 
+        const hasFilters = urlParams.has('user') || urlParams.has('book') ||
                           urlParams.has('start_date') || urlParams.has('end_date');
-        
+
         // Mostrar filtros automaticamente se houver algum aplicado
         if (hasFilters) {
             filterContainer.style.display = 'block';
         }
-        
+
         toggleFilter.addEventListener('click', function() {
             filterContainer.style.display = filterContainer.style.display === 'none' ? 'block' : 'none';
         });
