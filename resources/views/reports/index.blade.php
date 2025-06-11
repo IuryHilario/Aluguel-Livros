@@ -218,7 +218,6 @@
                 <table class="data-table">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Usuário</th>
                             <th>Livro</th>
                             <th>Data Devolução</th>
@@ -229,7 +228,6 @@
                     <tbody>
                         @foreach($overdueRentals as $rental)
                             <tr class="overdue-row">
-                                <td>{{ $rental->id_aluguel }}</td>
                                 <td>{{ $rental->usuario->nome }}</td>
                                 <td>{{ $rental->livro->titulo }}</td>
                                 <td>{{ \Carbon\Carbon::parse($rental->dt_devolucao)->format('d/m/Y') }}</td>
