@@ -1,0 +1,25 @@
+name: Create branch on new issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  update-issue-title:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update issue title with BIB- prefix
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          NEW_TITLE="BIB-${ISSUE_NUMBER} - ${ISSUE_TITLE}"
+          # Use gh CLI to edit the issue title
+          gh issue edit "$ISSUE_NUMBER" --title "$NEW_TITL
