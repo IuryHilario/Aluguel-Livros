@@ -22,4 +22,4 @@ jobs:
         run: |
           NEW_TITLE="BIB-${ISSUE_NUMBER} - ${ISSUE_TITLE}"
           # Use gh CLI to edit the issue title
-          gh issue edit "$ISSUE_NUMBER" --title "$NEW_TITL
+          gh issue edit "$ISSUE_NUMBER" --title "$NEW_TITLE"
