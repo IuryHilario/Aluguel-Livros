@@ -15,16 +15,10 @@
     <div class="panel-header">
         <h3>{{ $livro->titulo }}</h3>
         <div class="panel-actions">
-            <a href="{{ route('books.edit', $livro->id_livro) }}" class="btn btn-warning">
-                <i class="fas fa-edit"></i> Editar
-            </a>
-            <form action="{{ route('books.destroy', $livro->id_livro) }}" method="POST" class="d-inline">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger btn-delete-book">
-                    <i class="fas fa-trash"></i> Excluir
-                </button>
-            </form>
+            <x-form.actions
+                edit="{{ route('books.edit', $livro->id_livro) }}"
+                delete="{{ route('books.destroy', $livro->id_livro) }}"
+            />
         </div>
     </div>
     <div class="panel-body">
@@ -37,7 +31,7 @@
                         <i class="fas fa-book fa-4x"></i>
                     </div>
                 @endif
-                
+
                 <div class="book-status mt-3">
                     <h4>Status</h4>
                     <div class="status-info">
@@ -55,7 +49,7 @@
                             @endif
                         </p>
                     </div>
-                    
+
                     @if($livro->quantidade_disponivel > 0)
                     <div class="mt-3">
                         <a href="{{ route('rentals.create', ['book_id' => $livro->id_livro]) }}" class="btn btn-primary btn-block">
@@ -65,7 +59,7 @@
                     @endif
                 </div>
             </div>
-            
+
             <div class="book-info-container">
                 <div class="book-meta">
                     <p class="book-author"><strong><i class="fas fa-user-edit"></i> Autor:</strong> {{ $livro->autor }}</p>
@@ -74,10 +68,10 @@
                     @endif
                     <p class="book-year"><strong><i class="fas fa-calendar-alt"></i> Ano de Publicação:</strong> {{ $livro->ano_publicacao }}</p>
                 </div>
-                
+
                 <div class="book-history">
                     <h4><i class="fas fa-history"></i> Histórico de Empréstimos</h4>
-                    
+
                     @if(!isset($livro->alugueis) || $livro->alugueis->isEmpty())
                         <div class="empty-history">
                             <i class="fas fa-book"></i>
