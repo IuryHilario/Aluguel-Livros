@@ -13,9 +13,10 @@
     <div class="panel-header">
         <h3>Informações do Usuário</h3>
         <div class="panel-actions">
-            <a href="{{ route('users.edit', $usuario->id_usuario) }}" class="btn btn-primary">
-                <i class="fas fa-edit"></i> Editar
-            </a>
+            <x-form.actions
+                edit="{{ route('users.edit', $usuario->id_usuario) }}"
+                delete="{{ route('users.destroy', $usuario->id_usuario) }}"
+            />
         </div>
     </div>
     <div class="panel-body">
@@ -125,13 +126,6 @@
                 <i class="fas fa-arrow-left"></i> Voltar
             </a>
 
-            <form action="{{ route('users.destroy', $usuario->id_usuario) }}" method="POST" class="d-inline" style="margin-left: 10px;" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?')">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">
-                    <i class="fas fa-trash"></i> Excluir
-                </button>
-            </form>
         </div>
     </div>
 </div>
